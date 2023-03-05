@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import '../resources/ui_assets.dart';
 
@@ -15,11 +14,12 @@ class AppLogo extends StatelessWidget {
         child: AspectRatio(
       aspectRatio: aspectRatio,
       child: Image.asset(
-        UIAssets.appLogo,
+        UIAssets.shimmerEffectGif,
       ),
     ));
   }
 }
+
 class AppLogoRounded extends StatelessWidget {
   final double aspectRatio;
   const AppLogoRounded({

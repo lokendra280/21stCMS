@@ -1,134 +1,48 @@
-// import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static Color primaryColor(double opacity) {
-    try {
-      // return Color(int.parse(settingRepo.setting.value.mainColor.replaceAll("#", "0xFF"))).withOpacity(opacity);
-      return const Color(0xFF232F3E).withOpacity(opacity);
-    } catch (e) {
-      return const Color(0xFF232F3E).withOpacity(opacity);
-    }
-  }
+  static const Color bgColor = Color(0xffF4F7FB);
+  static const Color softWhite = Color(0xffE5E5E5);
+  static const Color darkWhite = Color(0xffE6EAF0);
+  static const Color lightBlue = Color(0xff6F80F8);
 
-  static Color secondaryColor(double opacity) {
-    try {
-      // return Color(int.parse(settingRepo.setting.value.mainColor.replaceAll("#", "0xFF"))).withOpacity(opacity);
-      return const Color(0xFFffd71c).withOpacity(opacity);
-    } catch (e) {
-      return const Color(0xFFffd71c).withOpacity(opacity);
-    }
-  }
+  static const Color bottomNavColor = Color(0xff1F272D);
 
+  static const Color darkBlue = Color(0xff132E89);
 
-  static Color secondaryLightColor(double opacity) {
-    try {
-      // return Color(int.parse(settingRepo.setting.value.mainColor.replaceAll("#", "0xFF"))).withOpacity(opacity);
-      return const Color(0xD9ffd71c).withOpacity(opacity);
-    } catch (e) {
-      return const Color(0xD9ffd71c).withOpacity(opacity);
-    }
-  }
+  // static const Color lightBlack = Color(0xff192638);
+  //Text Colors
+  static const Color primaryTextColor = Color(0xff192638);
+  static const Color caption = Color(0xff596579);
+  static const Color captionDark = Color(0xffD0D7E2);
 
-  static Color getRandomColor() {
-    return ([...Colors.primaries]..shuffle()).first;
-    // return Colors.primaries[Random().nextInt(Colors.primaries.length)];
-  }
+  // static const Color terteryTextColor = Color(0xff374253);
+  static const Color bluishGrey = Color(0xff374253);
+  static const Color hintTextColor = Color(0xff7B8698);
 
-  static Color primaryDarkColor(double opacity) {
-    try {
-      // return Color(int.parse(settingRepo.setting.value.mainColor.replaceAll("#", "0xFF"))).withOpacity(opacity);
-      return const Color(0xFF232F3E).withOpacity(opacity);
-    } catch (e) {
-      return const Color(0xFF232F3E).withOpacity(opacity);
-    }
-  }
+  static const Color darkGreen = Color(0xff0D8E42);
 
+  //Buttons Colors
+  static const Color primaryColor = Color(0xff223D99);
+  static const Color scaffoldBgColor = Color(0xFFF4F7FB);
+  static const Color secondaryTextBtnColor = Color(0xff144FFF);
+  static const Color btnBorderColor = Color(0xffbdbdbd);
+  static const Color tertiaryTextBtnColor = Color(0xff333333);
+  static const Color lightGreen = Color(0xff76C043);
+  static const Color unselectedColor = Color(0xffDFF5CF);
+  static const Color softIconColor = Color(0xffF4F7FB);
+  static const Color progressIndicatorColor = Color(0xff0E9E49);
+  static const Color progressIndicatorBgColor = Color(0xffEAEDF5);
 
+  static const Color lighBlueColor = Color(0xff97DFFF);
 
+  //Textfield Colors
+  static const Color textFieldBgColor = Color(0xffF0F2FF);
+  static const Color textFieldOtpBotder = Color(0xffA7B2C3);
+  static const Color textFieldBorderColor = Color(0xff172BB6);
+  static const Color secondarytextFieldBorderColor = Color(0xff5065F6);
 
+  static const Color textFieldErrorColor = Color(0xffDB312B);
 
-
-  static Color scaffoldColor(double opacity) {
-    try {
-      // return Color(int.parse(settingRepo.setting.value.mainColor.replaceAll("#", "0xFF"))).withOpacity(opacity);
-      return const Color(0xFFF8F8F8).withOpacity(0.97);
-    } catch (e) {
-      return const Color(0xFFF8F8F8).withOpacity(0.97);
-    }
-  }
-
-  static Color colorBlack(double opacity) {
-    try {
-      // return Color(int.parse(settingRepo.setting.value.mainColor.replaceAll("#", "0xFF"))).withOpacity(opacity);
-      return  Colors.black.withOpacity(opacity);
-    } catch (e) {
-      return  Colors.black.withOpacity(opacity);
-    }
-  }
-  static Color colorWhite(double opacity) {
-    try {
-      // return Color(int.parse(settingRepo.setting.value.mainColor.replaceAll("#", "0xFF"))).withOpacity(opacity);
-      return  Colors.white.withOpacity(opacity);
-    } catch (e) {
-      return  Colors.white.withOpacity(opacity);
-    }
-  }
-
-  static Color backgroundColor(double opacity) {
-    try {
-      // return Color(int.parse(settingRepo.setting.value.mainColor.replaceAll("#", "0xFF"))).withOpacity(opacity);
-      return const Color(0xFFFFFFFF);
-    } catch (e) {
-      return const Color(0xFFFFFFFF).withOpacity(opacity);
-    }
-  }
-
-  //other colors
-  static Color amber = const Color(0xFFF6B500);
-  static Color grey1=const Color(0xffF6F6F6);
-
-// LinearGradient buttonGradient =  LinearGradient(
-//   begin: Alignment(0.96, 0.0),
-//   end: Alignment(-0.95, 0.0),
-//   colors: [Color(0xff006fc4), Color(0xff428cee)],
-//   stops: [0.0, 1.0],
-// );
+  static const Color selectedColor = Color(0xffFADF99);
 }
-// green-yellow color combo
-final primaryColor = const Color(0xFF232F3E);
-final primaryColorDark = const Color(0xFF232F3E);
-final primaryColorLight = const Color(0xFF232F3E);
-final secondaryColor = const Color(0xFFfbd920);
-final scaffoldBgColor = const Color(0xFFF8F8F8); //#E5E5E5
-// final secondaryColor = Color(0xFFFB8C00);
-// final secondaryColorDark = Color(0xFFFB8C00);
-final secondaryColorDark = const Color(0xffFFA500);
-final disabledColor = Colors.grey[400];
-const dividerColor = Colors.grey;
-
-
-// Hex Opacity Values
-//
-// 100% — FF
-// 95% — F2
-// 90% — E6
-// 85% — D9
-// 80% — CC
-// 75% — BF
-// 70% — B3
-// 65% — A6
-// 60% — 99
-// 55% — 8C
-// 50% — 80
-// 45% — 73
-// 40% — 66
-// 35% — 59
-// 30% — 4D
-// 25% — 40
-// 20% — 33
-// 15% — 26
-// 10% — 1A
-// 5% — 0D
-// 0% — 00

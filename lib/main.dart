@@ -4,10 +4,8 @@
 /// (c) Copyright by 21st tech pvt ltd.
 ///*/
 import 'package:cms/modules/dashboard/dashboard.dart';
-import 'package:device_preview/device_preview.dart';
-import 'package:flutter/foundation.dart';
+
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 Future<void> main() async {
   // await mainCommon();
@@ -17,9 +15,10 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "Test",
-      home: DashBoardPage(),
+      home: DashBoardScreen(),
     );
   }
 }

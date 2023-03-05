@@ -1,9 +1,6 @@
-
-
 import 'package:flutter/material.dart';
 
 import '../resources/ui_assets.dart';
-
 
 // Widget circularShimmerView({required double radius}) {
 //   return CircleAvatar(
@@ -26,7 +23,7 @@ class ShimmerWidget extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(radius ?? 10),
         child: Image.asset(
-          UIAssets.gifLoading,
+          UIAssets.animationDir,
           fit: BoxFit.cover,
         ),
       ),
