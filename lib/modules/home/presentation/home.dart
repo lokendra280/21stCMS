@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../../../../core/presentation/resources/size_constants.dart';
@@ -41,15 +42,50 @@ class HomePage extends StatelessWidget {
                   //         width: double.maxFinite,
                   //       ))
                   //     : DashboardCarousal(),
-                  SBC.xLH,
+                  SBC.sH,
                   Container(
-                    margin: const EdgeInsets.symmetric(horizontal: SC.sH),
+                    height: 40,
+                    padding: const EdgeInsets.symmetric(horizontal: SC.mH),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(9),
                       boxShadow: [
                         BoxShadow(
                           blurStyle: BlurStyle.outer,
-                          color: Colors.grey.withOpacity(0.4),
+                          color: Colors.grey.withOpacity(1),
+                          spreadRadius: 4,
+                          blurRadius: 8,
+                          offset:
+                              const Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Today Attendance',
+                          style:
+                              Theme.of(context).textTheme.bodyText2!.copyWith(
+                                    fontFamily: GoogleFonts.inter().fontFamily,
+                                  ),
+                        ),
+                        const Icon(
+                          Icons.alarm,
+                          size: 25,
+                        ),
+                      ],
+                    ),
+                  ),
+                  SBC.xxLH,
+                  Container(
+                    height: 50,
+                    padding: const EdgeInsets.symmetric(horizontal: SC.mH),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(9),
+                      boxShadow: [
+                        BoxShadow(
+                          blurStyle: BlurStyle.outer,
+                          color: Colors.grey.withOpacity(0.9),
                           spreadRadius: 3,
                           blurRadius: 7,
                           offset:
@@ -58,31 +94,107 @@ class HomePage extends StatelessWidget {
                       ],
                     ),
                     child: Row(
-                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Expanded(
-                          child: MenuIcons(
-                              onTap: () {},
-                              assetImage: "assets/icons/svg/light_bulb.svg",
-                              title: "About CMS".tr),
+                        const Icon(
+                          Icons.pool_rounded,
+                          size: 25,
                         ),
-                        Expanded(
-                          child: MenuIcons(
-                              onTap: () {},
-                              assetImage: "assets/icons/svg/light_bulb.svg",
-                              title: "About CMS".tr),
+                        Text(
+                          'Total Project',
+                          style:
+                              Theme.of(context).textTheme.bodyText2!.copyWith(
+                                    fontFamily: GoogleFonts.inter().fontFamily,
+                                  ),
                         ),
-                        Expanded(
-                          child: MenuIcons(
-                              onTap: () {},
-                              assetImage: "assets/icons/svg/light_bulb.svg",
-                              title: "About CMS".tr),
+                        Text(
+                          '6',
+                          style:
+                              Theme.of(context).textTheme.bodyText2!.copyWith(
+                                    fontFamily: GoogleFonts.inter().fontFamily,
+                                  ),
                         ),
-                        Expanded(
-                          child: MenuIcons(
-                              onTap: () {},
-                              assetImage: "assets/icons/svg/light_bulb.svg",
-                              title: "About CMS".tr),
+                      ],
+                    ),
+                  ),
+                  SBC.xLH,
+                  Container(
+                    height: 50,
+                    padding: const EdgeInsets.symmetric(horizontal: SC.mH),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(9),
+                      boxShadow: [
+                        BoxShadow(
+                          blurStyle: BlurStyle.outer,
+                          color: Colors.grey.withOpacity(0.9),
+                          spreadRadius: 3,
+                          blurRadius: 7,
+                          offset:
+                              const Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Icon(
+                          Icons.task_alt_rounded,
+                          size: 25,
+                        ),
+                        Text(
+                          'Pending Task',
+                          style:
+                              Theme.of(context).textTheme.bodyText2!.copyWith(
+                                    fontFamily: GoogleFonts.inter().fontFamily,
+                                  ),
+                        ),
+                        Text(
+                          '5',
+                          style:
+                              Theme.of(context).textTheme.bodyText2!.copyWith(
+                                    fontFamily: GoogleFonts.inter().fontFamily,
+                                  ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SBC.xLH,
+                  Container(
+                    height: 50,
+                    padding: const EdgeInsets.symmetric(horizontal: SC.mH),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(9),
+                      boxShadow: [
+                        BoxShadow(
+                          blurStyle: BlurStyle.outer,
+                          color: Colors.grey.withOpacity(0.9),
+                          spreadRadius: 3,
+                          blurRadius: 7,
+                          offset:
+                              const Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Icon(
+                          Icons.inventory,
+                          size: 25,
+                        ),
+                        Text(
+                          'Unpaid Invoice',
+                          style:
+                              Theme.of(context).textTheme.bodyText2!.copyWith(
+                                    fontFamily: GoogleFonts.inter().fontFamily,
+                                  ),
+                        ),
+                        Text(
+                          '9',
+                          style:
+                              Theme.of(context).textTheme.bodyText2!.copyWith(
+                                    fontFamily: GoogleFonts.inter().fontFamily,
+                                  ),
                         ),
                       ],
                     ),

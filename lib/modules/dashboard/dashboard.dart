@@ -4,6 +4,7 @@ import 'package:cms/core/presentation/resources/colors.dart';
 import 'package:cms/modules/dashboard/widget/drawer.dart';
 import 'package:cms/modules/home/presentation/home.dart';
 import 'package:cms/modules/notice/presentation/notic_page.dart';
+import 'package:cms/modules/task/domain/presentation/task_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -15,6 +16,7 @@ import '../../core/presentation/resources/size_constants.dart';
 import '../../core/presentation/resources/ui_assets.dart';
 import '../../core/presentation/widget/forms/buttons.dart';
 import '../notification/presentation/notification.dart';
+import '../status/presentation/status_page.dart';
 import 'controller/dashboard_controller.dart';
 
 final _unselectedColor = Colors.white54;
@@ -43,6 +45,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   final List<Widget> dashboardWidgets = [
     HomePage(),
     const NoticePage(),
+    StatusPage(),
+    TaskPage(),
   ];
 
   @override
@@ -99,6 +103,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
               children: [
                 HomePage(),
                 NoticePage(),
+                StatusPage(),
+                TaskPage(),
               ],
             )),
         bottomNavigationBar: Obx(() => BottomNavigationBar(
