@@ -1,3 +1,4 @@
+import 'package:cms/core/presentation/widget/forms/buttons.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
@@ -76,6 +77,27 @@ class HomePage extends StatelessWidget {
                       ],
                     ),
                   ),
+                  SBC.xxLH,
+                  Row(
+                    children: [
+                      PrimaryButton(
+                        onPressed: () {},
+                        title: 'Clock in',
+                        width: 20,
+                        radius: 8,
+                        height: 30,
+                      ),
+                      SBC.lW,
+                      PrimaryButton(
+                        onPressed: () {},
+                        title: 'Clock Out',
+                        width: 20,
+                        radius: 8,
+                        height: 30,
+                      ),
+                    ],
+                  ),
+
                   SBC.xxLH,
                   Container(
                     height: 50,

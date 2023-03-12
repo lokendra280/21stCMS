@@ -4,6 +4,7 @@ import 'package:cms/core/presentation/resources/colors.dart';
 import 'package:cms/modules/dashboard/widget/drawer.dart';
 import 'package:cms/modules/home/presentation/home.dart';
 import 'package:cms/modules/notice/presentation/notic_page.dart';
+import 'package:cms/modules/profile/presentation/profile_page.dart';
 import 'package:cms/modules/task/domain/presentation/task_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -47,6 +48,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     const NoticePage(),
     StatusPage(),
     TaskPage(),
+    ProfilePage(),
   ];
 
   @override
@@ -105,11 +107,12 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 NoticePage(),
                 StatusPage(),
                 TaskPage(),
+                ProfilePage(),
               ],
             )),
         bottomNavigationBar: Obx(() => BottomNavigationBar(
               type: BottomNavigationBarType.fixed,
-              backgroundColor: AppColors.lightGreen,
+              backgroundColor: const Color.fromRGBO(73, 125, 182, 1),
               currentIndex: dashboardController.index.value,
               onTap: dashboardController.onBtnNavTap,
               showUnselectedLabels: true,

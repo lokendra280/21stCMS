@@ -6,12 +6,16 @@
 // import 'package:get/get.dart';
 // import 'package:google_fonts/google_fonts.dart';
 
+// import '../../../core/presentation/resources/colors.dart';
+// import '../../../core/presentation/resources/size_constants.dart';
+// import '../../../core/presentation/widget/forms/buttons.dart';
+// import '../../../core/presentation/widget/forms/textfields.dart';
+
 // class LoginScreen extends StatelessWidget {
 
 //   static const route = "/signInScreen";
 
 //   LoginScreen({Key? key}) : super(key: key);
-//   final LoginController signInController = Get.put(LoginController());
 
 //   @override
 //   Widget build(BuildContext context) {
@@ -22,7 +26,7 @@
 //           child: Column(
 //             mainAxisSize: MainAxisSize.min,
 //             children: [
-//               const Center(child: AppLogoWidget()),
+//               // const Center(child: AppLogoWidget()),
 //               SBC.lH,
 //               Text(
 //                 "welcome_back".tr,
@@ -56,7 +60,7 @@
 //   @override
 //   Widget build(BuildContext context) {
 //     final formKey = useMemoized(GlobalKey<FormBuilderState>.new);
-//     return GetBuilder<LoginController>(builder: (signInController) {
+//     return GetBuilder<>(builder: (signInController) {
 //       return Padding(
 //         padding: const EdgeInsets.symmetric(horizontal: SC.lH),
 //         child: FormBuilder(
@@ -167,6 +171,7 @@
 //     });
 //   }
 // }
+
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
