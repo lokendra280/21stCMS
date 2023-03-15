@@ -19,6 +19,8 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'core/presentation/resources/theme_data.dart';
 
+import 'core/presentation/routes/di.dart';
+import 'core/presentation/routes/router.dart';
 import 'core/utils/constant.dart';
 import 'modules/auth/presentation/screens/login_page.dart';
 
@@ -66,8 +68,8 @@ class FasoWear extends ConsumerStatefulWidget {
 class ApplicationState extends ConsumerState<FasoWear> {
   @override
   Widget build(BuildContext context) {
-    // final _appRouter = ref.watch(routerProvider);
-    return MaterialApp(
+    final _appRouter = ref.watch(routerProvider);
+    return MaterialApp.router(
       builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
       useInheritedMediaQuery: true,
@@ -82,16 +84,15 @@ class ApplicationState extends ConsumerState<FasoWear> {
         Locale('en'),
       ],
       theme: appTheme(),
-      home: LoginPage(),
-      // routerDelegate: AutoRouterDelegate(
-      //   _appRouter,
-      //   navigatorObservers: () => [
-      //     SentryNavigatorObserver(),
-      //     MyRouteObserver(),
-      //     //FirebaseAnalyticsObserver(analytics: ref.watch(analyticsProvider)),
-      //   ],
-      // ),
-      // routeInformationParser: _appRouter.defaultRouteParser(),
+      routerDelegate: AutoRouterDelegate(
+        _appRouter,
+        navigatorObservers: () => [
+          SentryNavigatorObserver(),
+          MyRouteObserver(),
+          //FirebaseAnalyticsObserver(analytics: ref.watch(analyticsProvider)),
+        ],
+      ),
+      routeInformationParser: _appRouter.defaultRouteParser(),
     );
   }
 }

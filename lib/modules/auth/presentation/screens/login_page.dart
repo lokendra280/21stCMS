@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cms/core/presentation/routes/router.gr.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -30,46 +31,46 @@ class LoginPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // final state = ref.watch(loginProvider);
-    // //final socialLoginState = ref.watch(socialLoginNotifier);
-    // ref
-    //   ..listen<ResultState>(loginProvider, (previous, next) {
-    //     next.maybeMap(
-    //         error: (error) => AppFlushBar.error(
-    //             context,
-    //             NetworkExceptions.getErrorMessage(
-    //                 error.error as NetworkExceptions)),
-    //         data: (_) {
-    //           CustomToast.success('Logged in Successfully');
-    //           context.router.pushAndPopUntil(
-    //               const LandingRoute(children: [HomeRouter()]),
-    //               predicate: (_) => false);
-    //           fetch profile on login
-    //           if (authGuard == false) {
-    //             context.router.pop(true);
-    //           } else {
-    //             onLoginCallback!(true);
-    //           }
-    //         },
-    //         orElse: () {});
-    //   })
-    //   ..listen<ResultState>(socialLoginNotifier, (previous, next) {
-    //     next.maybeMap(
-    //         error: (error) => AppFlushBar.error(
-    //             context,
-    //             NetworkExceptions.getErrorMessage(
-    //                 error.error as NetworkExceptions)),
-    //         data: (_) {
-    //           CustomToast.success('Logged in successfully');
-    //           //fetch profile on login
-    //           if (authGuard == false) {
-    //             context.router.pop(true);
-    //           } else {
-    //             onLoginCallback!(true);
-    //           }
-    //         },
-    //         orElse: () {});
-    //   });
+    final state = ref.watch(loginProvider);
+    final socialLoginState = ref.watch(socialLoginNotifier);
+    ref
+      ..listen<ResultState>(loginProvider, (previous, next) {
+        next.maybeMap(
+            error: (error) => AppFlushBar.error(
+                context,
+                NetworkExceptions.getErrorMessage(
+                    error.error as NetworkExceptions)),
+            data: (_) {
+              CustomToast.success('Logged in Successfully');
+              // context.router.pushAndPopUntil(
+              //     const DashBoardScreen (children: [HomeRouter()]),
+              //     predicate: (_) => false);
+              // fetch profile on login
+              if (authGuard == false) {
+                context.router.pop(true);
+              } else {
+                onLoginCallback!(true);
+              }
+            },
+            orElse: () {});
+      })
+      ..listen<ResultState>(socialLoginNotifier, (previous, next) {
+        next.maybeMap(
+            error: (error) => AppFlushBar.error(
+                context,
+                NetworkExceptions.getErrorMessage(
+                    error.error as NetworkExceptions)),
+            data: (_) {
+              CustomToast.success('Logged in successfully');
+              //fetch profile on login
+              if (authGuard == false) {
+                context.router.pop(true);
+              } else {
+                onLoginCallback!(true);
+              }
+            },
+            orElse: () {});
+      });
     return Scaffold(
       body: SafeArea(
         child: FormBuilder(

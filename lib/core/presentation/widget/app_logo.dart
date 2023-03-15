@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:lottie/lottie.dart';
 import '../resources/ui_assets.dart';
 
 class AppLogo extends StatelessWidget {
@@ -13,12 +13,12 @@ class AppLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-        child: AspectRatio(
-      aspectRatio: aspectRatio,
-      child: SvgPicture.asset(UIAssets.getSvg('FASOWEAR-LOGO.svg'))),
-    );
+        child: Lottie.asset(
+      'assets/animation/data.json',
+    ));
   }
 }
+
 class AppLogoRounded extends StatelessWidget {
   final double aspectRatio;
   const AppLogoRounded({
