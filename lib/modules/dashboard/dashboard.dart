@@ -48,7 +48,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     const NoticePage(),
     StatusPage(),
     TaskPage(),
-    ProfilePage(),
+    // ProfilePage(),
   ];
 
   @override
@@ -107,7 +107,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 NoticePage(),
                 StatusPage(),
                 TaskPage(),
-                ProfilePage(),
+                // ProfilePage(),
               ],
             )),
         bottomNavigationBar: Obx(() => BottomNavigationBar(
@@ -121,15 +121,14 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   fontWeight: FontWeight.w600,
                   fontSize: 12,
                   fontFamily: GoogleFonts.inter().fontFamily,
-                  color: AppColors.selectedColor),
+                  color: AppColors.amber),
               unselectedLabelStyle: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontSize: 12,
                   fontFamily: GoogleFonts.inter().fontFamily,
                   color: Colors.green),
               // color: AppColors.secondaryTextColor),
-              selectedIconTheme:
-                  const IconThemeData(color: AppColors.primaryColor),
+              selectedIconTheme: const IconThemeData(),
               unselectedIconTheme: IconThemeData(color: _unselectedColor),
               selectedItemColor: _selectedColor,
               unselectedItemColor: _unselectedColor,

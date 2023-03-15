@@ -294,8 +294,8 @@ class CampaignWidget extends StatelessWidget {
                             percent:
                                 percentFunded! > 1 ? 1 : percentFunded ?? 0,
                             barRadius: const Radius.circular(10),
-                            progressColor: AppColors.progressIndicatorColor,
-                            backgroundColor: AppColors.progressIndicatorBgColor,
+                            progressColor: AppColors.amber,
+                            backgroundColor: AppColors.amber,
                             // alignment: MainAxisAlignment.start,
                           ),
                         ),
@@ -320,7 +320,7 @@ class CampaignWidget extends StatelessWidget {
           top: 10,
           child: CircleAvatar(
             child: SvgPicture.asset(UIAssets.getSvg("fav_icon.svg")),
-            backgroundColor: AppColors.bgColor,
+            backgroundColor: AppColors.amber,
           ),
         )
       ],
@@ -447,7 +447,7 @@ class _NewProjectWidget extends StatelessWidget {
             top: 10,
             child: CircleAvatar(
               child: SvgPicture.asset(UIAssets.getSvg("fav_icon.svg")),
-              backgroundColor: AppColors.bgColor,
+              backgroundColor: AppColors.amber,
             ),
           )
         ],
@@ -514,7 +514,7 @@ class _TitleSection extends StatelessWidget {
     return Container(
       padding:
           EdgeInsets.only(top: MediaQuery.of(context).padding.top, right: 5),
-      color: AppColors.primaryColor,
+      color: AppColors.amber,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

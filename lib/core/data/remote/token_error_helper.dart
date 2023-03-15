@@ -1,9 +1,8 @@
-/// Author:    Bibek Baidya
+/// Author:    Lokendra Gharti
 /// Created:   20.12.2022
 /// Description:
-/// (c) Copyright by supremeitsolutions.com.
+/// (c) Copyright by lokendragharti3@gmail.com.
 ///*/
-
 
 enum TokenErrorType {
   refreshTokenHasExpired,
@@ -11,8 +10,6 @@ enum TokenErrorType {
   invalidAccessToken,
   tokenNotFound,
 }
-
-
 
 extension UIErrorExtension on TokenErrorType {
   String get description {
@@ -28,6 +25,5 @@ extension UIErrorExtension on TokenErrorType {
       default:
         return 'Unexpected error occurred while refreshing token';
     }
-
   }
 }

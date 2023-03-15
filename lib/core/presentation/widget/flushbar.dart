@@ -3,7 +3,7 @@ import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 
 
-class CustomFlushBar{
+class AppFlushBar{
 
   static void success(BuildContext context, String message, {String? title,Color? color, Widget? icon}){
     Flushbar(

@@ -1,4 +1,6 @@
+
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import '../resources/ui_assets.dart';
 
 class AppLogo extends StatelessWidget {
@@ -13,13 +15,10 @@ class AppLogo extends StatelessWidget {
     return ClipRRect(
         child: AspectRatio(
       aspectRatio: aspectRatio,
-      child: Image.asset(
-        UIAssets.shimmerEffectGif,
-      ),
-    ));
+      child: SvgPicture.asset(UIAssets.getSvg('FASOWEAR-LOGO.svg'))),
+    );
   }
 }
-
 class AppLogoRounded extends StatelessWidget {
   final double aspectRatio;
   const AppLogoRounded({
