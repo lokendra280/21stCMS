@@ -11,7 +11,6 @@ import '../../../../core/data/models/result_state.dart';
 import '../../../../core/data/remote/network_exceptions.dart';
 import '../../../../core/presentation/resources/size_constants.dart';
 import '../../../../core/presentation/resources/ui_assets.dart';
-import '../../../../core/presentation/widget/cached_network_image_builder.dart';
 import '../../../../core/presentation/widget/flushbar.dart';
 import '../../../../core/presentation/widget/forms/buttons.dart';
 import '../../../../core/presentation/widget/forms/textfields.dart';
@@ -31,8 +30,8 @@ class LoginPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(loginProvider);
-    final socialLoginState = ref.watch(socialLoginNotifier);
+    // final state = ref.watch(loginProvider);
+    // final socialLoginState = ref.watch(socialLoginNotifier);
     ref
       ..listen<ResultState>(loginProvider, (previous, next) {
         next.maybeMap(
@@ -88,7 +87,7 @@ class LoginPage extends ConsumerWidget {
                   child: SizedBox(
                       height: 160,
                       width: 160,
-                      child: SvgPicture.asset(UIAssets.getSvg('logo.jpg'))),
+                      child: SvgPicture.asset(UIAssets.getSvg('cmslogo.svg'))),
                 ),
                 SecondaryTextField(
                   fillColor: Colors.transparent,
@@ -130,8 +129,8 @@ class LoginPage extends ConsumerWidget {
                 PrimaryButton(
                   title: 'LOG IN',
                   onPressed: () {
-                    //context.router.navigate(const LandingRoute());
-                    if (_formKey.currentState!.saveAndValidate!()) {
+                    context.router.navigate(const DashBoardScreen());
+                    if (_formKey.currentState!.saveAndValidate()) {
                       ref
                           .read(loginProvider.notifier)
                           .login(_loginParams); //loginUser

@@ -14,7 +14,7 @@ class AppLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
         child: Lottie.asset(
-      'assets/animation/data.json',
+      'assets/animation/datas.json',
     ));
   }
 }

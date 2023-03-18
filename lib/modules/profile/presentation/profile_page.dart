@@ -25,10 +25,8 @@ import '../widget/verified.dart';
 class ProfilePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return AuthPageWrapper(
-        child: BaseWidget(builder: ((context, config, themeData) {
-      return DarkThemeAnnotatedRegion(
-          child: Scaffold(
+    return BaseWidget(builder: ((context, config, themeData) {
+      return Scaffold(
         backgroundColor: const Color(0xffC4C4C4).withOpacity(0.5),
         appBar: AppBar(
           title: Text(
@@ -72,8 +70,8 @@ class ProfilePage extends ConsumerWidget {
             const ProfileInfoHeaderDetail(),
           ]),
         ),
-      ));
-    })));
+      );
+    }));
   }
 }
 

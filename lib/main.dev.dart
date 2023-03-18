@@ -1,7 +1,7 @@
-/// Author:    Bibek Baidya
+/// Author:    Lokendra Gharti
 /// Created:   19.12.2022
 /// Description:
-/// (c) Copyright by supremeitsolutions.com.
+/// (c) Copyright by lokendragharti3@gmail.com.
 ///*/
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +17,3 @@ Future<void> main() async {
     builder: (context) => ProviderScope(child: FasoWear()),
   ));
 }
-
-
-

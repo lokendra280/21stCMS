@@ -26,6 +26,7 @@ import 'modules/auth/presentation/screens/login_page.dart';
 
 Future<void> mainCommon() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // ignore: prefer_typing_uninitialized_variables
   var dotenv;
   // await dotenv.load(
   //     fileName: "assets/.env",

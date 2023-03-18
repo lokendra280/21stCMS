@@ -13,7 +13,7 @@ class SplashPage extends StatelessWidget {
   Widget build(BuildContext context) {
     //TODO: check for authenticity
 
-    Future.delayed(const Duration(milliseconds: 000), () {
+    Future.delayed(const Duration(milliseconds: 3000), () {
       context.router.push(LoginRoute());
     });
 
@@ -26,8 +26,7 @@ class SplashPage extends StatelessWidget {
             width: double.infinity,
             child: Center(
               child: Builder(
-                builder: (context) =>
-                    Center(child: const Text("Welcome To 21st Tech")),
+                builder: (context) => Center(child: AppLogo()),
               ),
             )),
       ),
