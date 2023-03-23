@@ -8,7 +8,11 @@ class EmptyView extends StatelessWidget {
   final bool handleError;
   final Function? onErrorFunction;
 
-  EmptyView({this.message, this.handleError = false, this.onErrorFunction, required showError});
+  EmptyView({
+    this.message,
+    this.handleError = false,
+    this.onErrorFunction,
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -29,7 +29,10 @@ enum APIPath {
   notice,
 
   // * api related project
-  project
+  project,
+
+  // * api related to task
+  Task,
 }
 
 class APIPathHelper {
@@ -60,6 +63,15 @@ class APIPathHelper {
     switch (path) {
       case APIPath.project:
         return "/v1/project";
+      default:
+        return "";
+    }
+  }
+
+  static String ProjectAPIs(APIPath path, {String? keyword}) {
+    switch (path) {
+      case APIPath.Task:
+        return "v1/task";
       default:
         return "";
     }

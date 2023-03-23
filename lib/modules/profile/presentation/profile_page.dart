@@ -65,7 +65,7 @@ class ProfilePage extends ConsumerWidget {
                   return _ProfileInfoHeader(profile);
                 }, error: (error, stacktrace) {
                   return EmptyView(
-                    showError: NetworkExceptions.getErrorMessage(
+                    message: NetworkExceptions.getErrorMessage(
                         error as NetworkExceptions),
                   );
                 }, loading: () {

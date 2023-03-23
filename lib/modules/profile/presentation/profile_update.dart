@@ -56,7 +56,7 @@ class ProfileUpdatePage extends StatelessWidget {
                   );
                 }, error: (error, stacktrace) {
                   return EmptyView(
-                    showError: NetworkExceptions.getErrorMessage(
+                    message: NetworkExceptions.getErrorMessage(
                         error as NetworkExceptions),
                   );
                 }, loading: () {
