@@ -30,8 +30,7 @@ class LoginPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // final state = ref.watch(loginProvider);
-    // final socialLoginState = ref.watch(socialLoginNotifier);
+    final state = ref.watch(loginProvider);
     ref
       ..listen<ResultState>(loginProvider, (previous, next) {
         next.maybeMap(
@@ -41,9 +40,8 @@ class LoginPage extends ConsumerWidget {
                     error.error as NetworkExceptions)),
             data: (_) {
               CustomToast.success('Logged in Successfully');
-              // context.router.pushAndPopUntil(
-              //     const DashBoardScreen (children: [HomeRouter()]),
-              //     predicate: (_) => false);
+              context.router
+                  .pushAndPopUntil(DashBoardScreen(), predicate: (_) => false);
               // fetch profile on login
               if (authGuard == false) {
                 context.router.pop(true);
@@ -87,7 +85,7 @@ class LoginPage extends ConsumerWidget {
                   child: SizedBox(
                       height: 160,
                       width: 160,
-                      child: SvgPicture.asset(UIAssets.getSvg('cmslogo.svg'))),
+                      child: SvgPicture.asset(UIAssets.getSvg('logi.svg'))),
                 ),
                 SecondaryTextField(
                   fillColor: Colors.transparent,
@@ -99,7 +97,7 @@ class LoginPage extends ConsumerWidget {
                     // FormBuilderValidators.match(context,r'(?:\+977[- ])?\d{2}-?\d{7,8}',errorText: "Enter a valid mobile number"),
                   ]),
                   onSaved: (newValue) {
-                    _loginParams.username = newValue;
+                    _loginParams.email = newValue;
                   },
                 ),
                 SBC.lH,
@@ -137,9 +135,9 @@ class LoginPage extends ConsumerWidget {
                       print('login value===> ${_loginParams.toJsonLogin()}');
                     }
                   },
-                  // widget: state is Loading
-                  //     ? const CustomCupertinoIndicator()
-                  //     : null,
+                  widget: state is Loading
+                      ? const CustomCupertinoIndicator()
+                      : null,
                 ),
               ],
             ),

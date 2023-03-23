@@ -1,3 +1,5 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:cms/core/presentation/routes/router.gr.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/presentation/widget/forms/buttons.dart';
 import '../../../../core/presentation/widget/toast.dart';
@@ -9,7 +11,7 @@ class LogOutDialog extends StatelessWidget {
 
   Future<void> _onLogOutSuccess(BuildContext context) async {
     CustomToast.success('Successfully logged out');
-    Navigator.pop(context);
+    context.router.push(LoginRoute());
   }
 
   @override

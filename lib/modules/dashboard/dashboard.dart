@@ -5,7 +5,6 @@ import 'package:cms/modules/dashboard/widget/drawer.dart';
 import 'package:cms/modules/home/presentation/home.dart';
 import 'package:cms/modules/notice/presentation/notic_page.dart';
 import 'package:cms/modules/profile/presentation/profile_page.dart';
-import 'package:cms/modules/task/domain/presentation/task_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -18,6 +17,7 @@ import '../../core/presentation/resources/ui_assets.dart';
 import '../../core/presentation/widget/forms/buttons.dart';
 import '../notification/presentation/notification.dart';
 import '../status/presentation/status_page.dart';
+import '../task/presentation/task.dart';
 import 'controller/dashboard_controller.dart';
 
 final _unselectedColor = Colors.white54;
@@ -48,7 +48,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     const NoticePage(),
     StatusPage(),
     TaskPage(),
-    // ProfilePage(),
+    ProfilePage(),
   ];
 
   @override
@@ -107,7 +107,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 NoticePage(),
                 StatusPage(),
                 TaskPage(),
-                // ProfilePage(),
+                ProfilePage(),
               ],
             )),
         bottomNavigationBar: Obx(() => BottomNavigationBar(
@@ -121,7 +121,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   fontWeight: FontWeight.w600,
                   fontSize: 12,
                   fontFamily: GoogleFonts.inter().fontFamily,
-                  color: AppColors.amber),
+                  color: AppColors.bluishGrey),
               unselectedLabelStyle: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontSize: 12,
@@ -158,7 +158,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                         ? _selectedColor
                         : _unselectedColor,
                   ),
-                  label: "Status".tr,
+                  label: "Event".tr,
                 ),
                 BottomNavigationBarItem(
                   icon: SvgPicture.asset(
@@ -182,75 +182,5 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             )),
       ),
     );
-
-    // bottomNavigationBar: BottomNavigationBar(
-    //     type: BottomNavigationBarType.fixed,
-    //     backgroundColor: AppColors.lightGreen,
-    //     currentIndex: dashboardController.index.value,
-    //     onTap: dashboardController.onBtnNavTap,
-    //     showUnselectedLabels: true,
-    //     showSelectedLabels: true,
-    //     selectedLabelStyle: TextStyle(
-    //         fontWeight: FontWeight.w600,
-    //         fontSize: 12,
-    //         fontFamily: GoogleFonts.inter().fontFamily,
-    //         color: AppColors.selectedColor),
-    //     unselectedLabelStyle: TextStyle(
-    //         fontWeight: FontWeight.w600,
-    //         fontSize: 12,
-    //         fontFamily: GoogleFonts.inter().fontFamily,
-    //         color: Colors.green),
-    //     // color: AppColors.secondaryTextColor),
-    //     selectedIconTheme: const IconThemeData(color: AppColors.primaryColor),
-    //     unselectedIconTheme: IconThemeData(color: _unselectedColor),
-    //     selectedItemColor: _selectedColor,
-    //     unselectedItemColor: _unselectedColor,
-    //     items: <BottomNavigationBarItem>[
-    //       BottomNavigationBarItem(
-    //         icon: SvgPicture.asset(
-    //           "assets/icons/svg/home_trend.svg",
-    //           color: dashboardController.index.value == 0
-    //               ? _selectedColor
-    //               : _unselectedColor,
-    //         ),
-    //         label: "Home".tr,
-    //       ),
-    //       BottomNavigationBarItem(
-    //         icon: SvgPicture.asset(
-    //           "assets/icons/svg/message_notification.svg",
-    //           color: dashboardController.index.value == 1
-    //               ? _selectedColor
-    //               : _unselectedColor,
-    //         ),
-    //         label: "Inbox".tr,
-    //       ),
-    //       BottomNavigationBarItem(
-    //         icon: SvgPicture.asset(
-    //           "assets/icons/svg/home_trend.svg",
-    //           color: dashboardController.index.value == 2
-    //               ? _selectedColor
-    //               : _unselectedColor,
-    //         ),
-    //         label: "Status".tr,
-    //       ),
-    //       BottomNavigationBarItem(
-    //         icon: SvgPicture.asset(
-    //           "assets/icons/svg/project.svg",
-    //           color: dashboardController.index.value == 3
-    //               ? _selectedColor
-    //               : _unselectedColor,
-    //         ),
-    //         label: "Task".tr,
-    //       ),
-    //       BottomNavigationBarItem(
-    //         icon: SvgPicture.asset(
-    //           "assets/icons/svg/Activity.svg",
-    //           color: dashboardController.index.value == 4
-    //               ? _selectedColor
-    //               : _unselectedColor,
-    //         ),
-    //         label: "Account".tr,
-    //       ),
-    //     ]),
   }
 }

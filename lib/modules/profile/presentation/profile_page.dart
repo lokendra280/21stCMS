@@ -39,12 +39,18 @@ class ProfilePage extends ConsumerWidget {
           centerTitle: true,
           automaticallyImplyLeading: false,
           elevation: 0,
-          backgroundColor: primaryColor,
+          // backgroundColor: primaryColor,
           actions: [
             IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.settings),
-              color: Colors.white,
+              onPressed: () {
+                showAnimatedDialog(
+                    context: context,
+                    widget: LogOutDialog(() {
+                      ref.read(authProvider).logout();
+                    }));
+              },
+              icon: const Icon(Icons.logout),
+              color: Colors.red.shade500,
             ),
           ],
         ),
@@ -184,141 +190,6 @@ class ProfileInfoHeaderDetail extends ConsumerWidget {
             color: Colors.white,
             padding:
                 const EdgeInsets.symmetric(vertical: SC.mH, horizontal: SC.mW),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                InkWell(
-                  onTap: () {
-                    // context.router.navigate(const WishListListingRoute());
-                  },
-                  child: const CustomIconButton(
-                    iconName: 'wishlist.svg',
-                    title: 'My Wishlist',
-                  ),
-                ),
-                const CustomIconButton(
-                  iconName: 'icon_one.svg',
-                  title: 'Lorem',
-                ),
-                const CustomIconButton(
-                  iconName: 'review_icon.svg',
-                  title: 'Reviews',
-                ),
-                const CustomIconButton(
-                  iconName: 'coupon_icon.svg',
-                  title: 'Coupons',
-                ),
-              ],
-            ),
-          ),
-          SBC.mH,
-          Container(
-            color: Colors.white,
-            padding:
-                const EdgeInsets.symmetric(horizontal: SC.mW, vertical: SC.mH),
-            child: Column(
-              children: [
-                // const SectionTitle(title: 'Orders'),
-                SBC.mH,
-                const _OrderIcons()
-              ],
-            ),
-          ),
-          SBC.mH,
-          Container(
-            color: Colors.white,
-            padding:
-                const EdgeInsets.symmetric(horizontal: SC.mW, vertical: SC.mH),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Services',
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText1!
-                      .copyWith(fontWeight: FontWeight.w600),
-                ),
-                SBC.mH,
-                const _ServiceIcons(),
-                // AlignedGridView.count(
-                //   crossAxisCount: 4,
-                //   shrinkWrap: true,
-                //   crossAxisSpacing: 4,
-                //   itemBuilder: (context, index) {
-                //     return _ServiceIcons();
-                //   },
-                // )
-              ],
-            ),
-          ),
-          SBC.mH,
-          Container(
-            color: Colors.white,
-            padding:
-                const EdgeInsets.symmetric(vertical: SC.mH, horizontal: SC.mW),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                InkWell(
-                  onTap: () {
-                    // context.router.navigate(TrackOrderRoute());
-                  },
-                  child: const _ProfileButtons(
-                    title: 'Track Your Order',
-                  ),
-                ),
-                const Divider(),
-                SBC.sH,
-                const _ProfileButtons(
-                  title: 'Discount Coupons',
-                ),
-                SBC.sH,
-                const Divider(),
-                SBC.sH,
-                InkWell(
-                    onTap: () {
-                      // context.router.navigate(const AddressRoute());
-                    },
-                    child: const _ProfileButtons(
-                      title: 'Address Book',
-                    )),
-                SBC.sH,
-                const Divider(),
-                SBC.sH,
-                const _ProfileButtons(
-                  title: 'Customer Support',
-                ),
-                SBC.sH,
-                const Divider(),
-                SBC.sH,
-                const _ProfileButtons(
-                  title: 'Help Center',
-                ),
-                SBC.sH,
-              ],
-            ),
-          ),
-          SBC.mH,
-          Container(
-            width: double.infinity,
-            color: Colors.white,
-            padding:
-                const EdgeInsets.symmetric(vertical: SC.mH, horizontal: SC.mW),
-            child: InkWell(
-              onTap: () {
-                showAnimatedDialog(
-                    context: context,
-                    widget: LogOutDialog(() {
-                      ref.read(authProvider).logout();
-                    }));
-              },
-              child: const _ProfileButtons(
-                title: 'Log Out',
-                color: Color(0xffFF5E5E),
-              ),
-            ),
           ),
         ],
       ),
@@ -366,24 +237,24 @@ class _ServiceIcons extends StatelessWidget {
   }
 }
 
-class _OrderIcons extends StatelessWidget {
-  const _OrderIcons({
-    Key? key,
-  }) : super(key: key);
+// class _OrderIcons extends StatelessWidget {
+//   const _OrderIcons({
+//     Key? key,
+//   }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: const [
-        CustomIconButton(title: 'Cancelled', iconName: 'bookmark_icon.svg'),
-        CustomIconButton(title: 'unpaid', iconName: 'card_icon.svg'),
-        CustomIconButton(title: 'To be Shipped', iconName: 'box_icon.svg'),
-        CustomIconButton(title: 'To Receive', iconName: 'delivery_icon.svg'),
-      ],
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Row(
+//       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//       children: const [
+//         CustomIconButton(title: 'Cancelled', iconName: 'bookmark_icon.svg'),
+//         CustomIconButton(title: 'unpaid', iconName: 'card_icon.svg'),
+//         CustomIconButton(title: 'To be Shipped', iconName: 'box_icon.svg'),
+//         CustomIconButton(title: 'To Receive', iconName: 'delivery_icon.svg'),
+//       ],
+//     );
+//   }
+// }
 
 class CustomIconButton extends StatelessWidget {
   final String title;

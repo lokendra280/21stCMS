@@ -10,7 +10,7 @@ enum APIPath {
   // * Auth apis
   login,
   logOut,
-  CATEGORY_URI,
+
   registration,
   socialLogin,
   sendOTPResetPwd,
@@ -24,6 +24,12 @@ enum APIPath {
   updateProfile,
   profilePic,
   imageUpload,
+
+  // * notice related api
+  notice,
+
+  // * api related project
+  project
 }
 
 class APIPathHelper {
@@ -50,18 +56,36 @@ class APIPathHelper {
   static final String clientSecret =
       dotenv.env['CLIENT_SECRET'] ?? ""; // global api base url
 
+  static String projectAPIs(APIPath path, {String? keyword}) {
+    switch (path) {
+      case APIPath.project:
+        return "/v1/project";
+      default:
+        return "";
+    }
+  }
+
+  static String noticeAPIs(APIPath path, {String? keyword}) {
+    switch (path) {
+      case APIPath.project:
+        return "/v1/notice";
+      default:
+        return "";
+    }
+  }
+
   static String authAPIs(APIPath path, {String? keyword}) {
     switch (path) {
       case APIPath.login:
-        return "/auth/customer-login";
+        return "/auth/login";
       case APIPath.logOut:
-        return "/user/logout";
+        return "/auth/logout";
       case APIPath.authToken:
         return "/auth/token";
       case APIPath.removeAccount:
         return "/remove/account";
       case APIPath.refreshToken:
-        return "/token-refresh";
+        return "/auth/refresh-token";
       case APIPath.registration:
         return "/register/customer";
       case APIPath.socialLogin:
@@ -84,101 +108,4 @@ class APIPathHelper {
         return "";
     }
   }
-
-  // static String assetManager(APIPath imageUpload) {}
-
-  // static String cartWishlistAPIs(APIPath path, {int? id, String? query}) {
-  //   switch (path) {
-  //     case APIPath.carts:
-  //       return "/v1/carts";
-  //     case APIPath.addToCart:
-  //       return "/v1/carts/add";
-  //     case APIPath.cartCount:
-  //       return "/carts/count";
-  //     case APIPath.deleteFromCart:
-  //       return "/v1/carts/items?id=$id";
-  //     case APIPath.wishList:
-  //       if (id != null) return "/wishlists?id=$id";
-  //       return "/wishlists";
-  //     case APIPath.couponCode:
-  //       return "/coupons/validate/$query";
-  //     default:
-  //       return "";
-  //   }
-  // }
-
-  // static String assetManager(APIPath path, {int? id}) {
-  //   switch (path) {
-  //     case APIPath.imageUpload:
-  //       return "/asset-manager/upload-image";
-  //     default:
-  //       return "";
-  //   }
-  // }
-
-  // static String locationAPIs(APIPath path, {String? keyword}) {
-  //   switch (path) {
-  //     case APIPath.provinces:
-  //       return "/provinces";
-  //     case APIPath.districts:
-  //       return "/provinces/$keyword/districts";
-  //     case APIPath.municipalities:
-  //       return "/districts/$keyword/municipalities";
-  //     case APIPath.wards:
-  //       return "/municipalities/$keyword/wards";
-  //     case APIPath.shippingAddress:
-  //       return "/address";
-  //     default:
-  //       return "";
-  //   }
-  // }
-
-  // static String orderApis(APIPath path, {int? id, String? query}) {
-  //   switch (path) {
-  //     case APIPath.buyNow:
-  //       return "/orders/buy-now";
-  //     case APIPath.confirmOrder:
-  //       return "/orders/confirm";
-  //     case APIPath.myOrders:
-  //       if (query != null)
-  //         return "/orders?filter[where][status]=$query"; //&[where][order]=createdOn DESC
-  //       return "/orders";
-  //     case APIPath.trackMyOrder:
-  //       return "/orders?filter[where][tracking_code]=$query";
-  //     case APIPath.orderDetail:
-  //       return "/orders/$id";
-  //     case APIPath.orderStatusChange:
-  //       return "/orders/cancel/$id";
-  //     default:
-  //       return "";
-  //   }
-  // }
-
-  // static String productAPIs(APIPath path, {int? id, String? query}) {
-  //   switch (path) {
-  //     case APIPath.categoryListing:
-  //       return "/m/category-list";
-  //     // return "/categories";
-  //     case APIPath.productDetail:
-  //       return "/products/$query";
-  //     case APIPath.products: // frontend/category/$id/products?
-  //       return "/products";
-  //     case APIPath.deals: // frontend/category/$id/products?
-  //       return "/deals";
-  //     case APIPath.productFaq:
-  //       if (id != null) return "/faq/question?filter[where][productId]=$id";
-  //       return "/faq/question";
-  //     case APIPath.productReview:
-  //       if (id != null) return "/product-review?filter[where][productId]=$id";
-  //       return "/product-review";
-  //     case APIPath.brands:
-  //       if (query != null)
-  //         return "/brands?filter[where][isActive]=true&filter[limit]=$query&&filter[where][image][neq]=";
-  //       return "/brands?filter[where][isActive]=true&filter[limit]=10&&filter[where][image][neq]=";
-  //     case APIPath.banners:
-  //       return "/banners"; //?filter[where][position]=Popup-banner-section
-  //     default:
-  //       return "";
-  //   }
-  // }
 }

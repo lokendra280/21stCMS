@@ -10,7 +10,6 @@ import '../../../../core/presentation/resources/size_constants.dart';
 import '../../../../core/presentation/resources/ui_assets.dart';
 import '../../../core/presentation/resources/colors.dart';
 import '../../../core/presentation/widget/circular_avatar.dart';
-import '../../../core/presentation/widget/image_slider/image_slider.dart';
 import '../../dashboard/controller/dashboard_controller.dart';
 import '../../notification/presentation/notification.dart';
 
@@ -77,26 +76,6 @@ class HomePage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SBC.xxLH,
-                  Row(
-                    children: [
-                      PrimaryButton(
-                        onPressed: () {},
-                        title: 'Clock in',
-                        width: 20,
-                        radius: 8,
-                        height: 30,
-                      ),
-                      SBC.lW,
-                      PrimaryButton(
-                        onPressed: () {},
-                        title: 'Clock Out',
-                        width: 20,
-                        radius: 8,
-                        height: 30,
-                      ),
-                    ],
-                  ),
 
                   SBC.xxLH,
                   Container(
@@ -129,13 +108,10 @@ class HomePage extends StatelessWidget {
                                     fontFamily: GoogleFonts.inter().fontFamily,
                                   ),
                         ),
-                        Text(
-                          '6',
-                          style:
-                              Theme.of(context).textTheme.bodyText2!.copyWith(
-                                    fontFamily: GoogleFonts.inter().fontFamily,
-                                  ),
-                        ),
+                        const Icon(
+                          Icons.arrow_drop_down_rounded,
+                          size: 20,
+                        )
                       ],
                     ),
                   ),
@@ -164,60 +140,16 @@ class HomePage extends StatelessWidget {
                           size: 25,
                         ),
                         Text(
-                          'Pending Task',
+                          'Total Lead',
                           style:
                               Theme.of(context).textTheme.bodyText2!.copyWith(
                                     fontFamily: GoogleFonts.inter().fontFamily,
                                   ),
                         ),
-                        Text(
-                          '5',
-                          style:
-                              Theme.of(context).textTheme.bodyText2!.copyWith(
-                                    fontFamily: GoogleFonts.inter().fontFamily,
-                                  ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SBC.xLH,
-                  Container(
-                    height: 50,
-                    padding: const EdgeInsets.symmetric(horizontal: SC.mH),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(9),
-                      boxShadow: [
-                        BoxShadow(
-                          blurStyle: BlurStyle.outer,
-                          color: Colors.grey.withOpacity(0.9),
-                          spreadRadius: 3,
-                          blurRadius: 7,
-                          offset:
-                              const Offset(0, 3), // changes position of shadow
-                        ),
-                      ],
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
                         const Icon(
-                          Icons.inventory,
-                          size: 25,
-                        ),
-                        Text(
-                          'Unpaid Invoice',
-                          style:
-                              Theme.of(context).textTheme.bodyText2!.copyWith(
-                                    fontFamily: GoogleFonts.inter().fontFamily,
-                                  ),
-                        ),
-                        Text(
-                          '9',
-                          style:
-                              Theme.of(context).textTheme.bodyText2!.copyWith(
-                                    fontFamily: GoogleFonts.inter().fontFamily,
-                                  ),
-                        ),
+                          Icons.arrow_drop_down_rounded,
+                          size: 20,
+                        )
                       ],
                     ),
                   ),
@@ -251,7 +183,7 @@ class CampaignWidget extends StatelessWidget {
           padding: const EdgeInsets.all(SC.mH),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
-            color: Colors.white,
+            color: Colors.blueGrey,
           ),
           child: Column(
             children: [
@@ -294,8 +226,8 @@ class CampaignWidget extends StatelessWidget {
                             percent:
                                 percentFunded! > 1 ? 1 : percentFunded ?? 0,
                             barRadius: const Radius.circular(10),
-                            progressColor: AppColors.amber,
-                            backgroundColor: AppColors.amber,
+                            progressColor: AppColors.bluishGrey,
+                            backgroundColor: AppColors.bluishGrey,
                             // alignment: MainAxisAlignment.start,
                           ),
                         ),
@@ -320,7 +252,7 @@ class CampaignWidget extends StatelessWidget {
           top: 10,
           child: CircleAvatar(
             child: SvgPicture.asset(UIAssets.getSvg("fav_icon.svg")),
-            backgroundColor: AppColors.amber,
+            backgroundColor: AppColors.bgColor,
           ),
         )
       ],
@@ -447,7 +379,7 @@ class _NewProjectWidget extends StatelessWidget {
             top: 10,
             child: CircleAvatar(
               child: SvgPicture.asset(UIAssets.getSvg("fav_icon.svg")),
-              backgroundColor: AppColors.amber,
+              backgroundColor: AppColors.bgColor,
             ),
           )
         ],
@@ -514,7 +446,7 @@ class _TitleSection extends StatelessWidget {
     return Container(
       padding:
           EdgeInsets.only(top: MediaQuery.of(context).padding.top, right: 5),
-      color: AppColors.amber,
+      color: AppColors.bluishGrey,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -526,8 +458,7 @@ class _TitleSection extends StatelessWidget {
                 ClipPath(
                   clipper: FirstClipper(), //set our custom wave clipper.
                   child: Container(
-                    color: Colors.green,
-                    height: 60,
+                    color: Colors.green, height: 60,
                     width: width * 0.5,
                     // alignment: Alignment.center,
                   ),
@@ -622,42 +553,6 @@ class MenuIcons extends StatelessWidget {
     );
   }
 }
-
-// class DashboardCarousal extends StatelessWidget {
-//   final DashboardController dashboardController = Get.find();
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return SizedBox(
-//       height: 150,
-//       child: ImageSlider(
-//         dotSize: 3,
-//         dotBgColor: Colors.transparent,
-//         images: List.generate(
-//           // dashboardController.sliderImages.length,
-//           dashboardController.homeSliders.length,
-//           // (index) => CircularAvatar(
-//           //   imageUrl: dashboardController.sliderImages[index],
-//           //   borderRadius: 8,
-//           // ),
-//           (index) {
-//             return CircularAvatar(
-//                 borderRadius: 10,
-//                 imageUrl:
-//                     dashboardController.homeSliders[index].sliderImage!.path!);
-//             return ClipRRect(
-//               borderRadius: BorderRadius.circular(8),
-//               child: Image.asset(
-//                 'assets/images/dummy/slider_$index.png',
-//                 fit: BoxFit.fitWidth,
-//               ),
-//             );
-//           },
-//         ),
-//       ),
-//     );
-//   }
-// }
 
 class FirstClipper extends CustomClipper<Path> {
   @override

@@ -8,9 +8,7 @@ abstract class LoginRemoteDataSource {
   Future<dynamic> loginUser(LoginParams params);
 
   Future<dynamic> getToken(
-      {required String code,
-      required String clientId,
-      required String userName});
+      {required String code, required String clientId, required String email});
 }
 
 class LoginRemoteDataSourceImpl extends LoginRemoteDataSource {
@@ -25,7 +23,7 @@ class LoginRemoteDataSourceImpl extends LoginRemoteDataSource {
           APIPathHelper.authAPIs(APIPath.login),
           options: Options(headers: {"requiresToken": false}),
           data: {
-            "username": params.username?.trim(),
+            "username": params.email?.trim(),
             "password": params.password?.trim(),
             "client_id": APIPathHelper.clientSecret,
             "client_secret": APIPathHelper.clientSecret
@@ -33,7 +31,7 @@ class LoginRemoteDataSourceImpl extends LoginRemoteDataSource {
       return getToken(
           code: response['code'],
           clientId: APIPathHelper.clientSecret,
-          userName: params.username!);
+          email: params.email!);
     } catch (e) {
       rethrow;
     }
@@ -43,11 +41,11 @@ class LoginRemoteDataSourceImpl extends LoginRemoteDataSource {
   Future<dynamic> getToken(
       {required String code,
       required String clientId,
-      required String userName}) async {
+      required String email}) async {
     try {
       final response = await dioClient.post(
           APIPathHelper.authAPIs(APIPath.authToken),
-          data: {"code": code, "clientId": clientId, "username": userName});
+          data: {"code": code, "clientId": clientId, "email": email});
       return response;
     } catch (e) {
       rethrow;

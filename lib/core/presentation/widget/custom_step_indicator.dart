@@ -4,7 +4,7 @@ import '../resources/colors.dart';
 
 class CustomStepProgressBar extends StatelessWidget {
   // final List<String> stepperList = ['Cart','Shipping', 'Payment', 'Preview'];
-  final List<String> stepperList = ['Cart','Shipping', 'Summary'];
+  final List<String> stepperList = ['Cart', 'Shipping', 'Summary'];
 
   CustomStepProgressBar({
     Key? key,
@@ -41,7 +41,8 @@ class CustomStepProgressBar extends StatelessWidget {
                           color: i <= activeStep
                               ? Theme.of(context).primaryColor
                               : null,
-                          border: Border.all(width: 3, color: primaryColor),
+                          border: Border.all(
+                              width: 3, color: AppColors.primaryColor),
                           shape: BoxShape.circle,
                         ),
                         child: Center(
@@ -60,10 +61,8 @@ class CustomStepProgressBar extends StatelessWidget {
                     // margin: const EdgeInsetsDirectional.only(start: 12.0),
                     child: Text(
                       stepperList.elementAt(i),
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyText2
-                          ?.apply(color: primaryColor, fontWeightDelta: 1),
+                      style: Theme.of(context).textTheme.bodyText2?.apply(
+                          color: AppColors.primaryColor, fontWeightDelta: 1),
                     ),
                   ),
                 ],
@@ -90,7 +89,8 @@ class CustomStepProgressBar extends StatelessWidget {
         return Text(
           '${index + 1}',
           style: TextStyle(
-              color: index <= currentStep ? Colors.white : primaryColor),
+              color:
+                  index <= currentStep ? Colors.white : AppColors.primaryColor),
         );
       case StepState.editing:
         return const Icon(

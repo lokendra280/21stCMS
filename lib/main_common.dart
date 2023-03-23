@@ -1,49 +1,47 @@
-/// Author:    Lokendra Gharti
-/// Created:   19.12.2022
+/// Author:    Nabraj Khadka
+/// Created:   17.03.2022
 /// Description:
-/// (c) Copyright by lokendragharti3@gmail.com.
+/// (c) Copyright by Salesberry.com.
 ///*/
 
 import 'dart:io';
-
 import 'package:auto_route/auto_route.dart';
-import 'package:cms/modules/dashboard/dashboard.dart';
 import 'package:device_preview/device_preview.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:form_builder_validators/localization/l10n.dart';
+import 'package:hive/hive.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+import 'package:path_provider/path_provider.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
-
 import 'core/presentation/resources/theme_data.dart';
-
 import 'core/presentation/routes/di.dart';
 import 'core/presentation/routes/router.dart';
 import 'core/utils/constant.dart';
-import 'modules/auth/presentation/screens/login_page.dart';
 
 Future<void> mainCommon() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // ignore: prefer_typing_uninitialized_variables
-  var dotenv;
-  // await dotenv.load(
-  //     fileName: "assets/.env",
-  //     mergeWith: Platform.environment); //dotenv.env['BASE_URL'];
-  //Todo: await configureDependencies(); //init dependencies
 
   // await Firebase.initializeApp();
 
-  //If subscribe based sent notification then use this token
-  // final fcmToken = await FirebaseMessaging.instance.getToken();
-  // print(fcmToken);
-  //
-  // //If subscribe based on topic then use this
-  // await FirebaseMessaging.instance.subscribeToTopic('new-year');
-
   // FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
 
+  // if (Platform.isAndroid) {
+  //   await AndroidInAppWebViewController.setWebContentsDebuggingEnabled(true);
+  // }
+
+  //environment file
+  await dotenv.load(
+      fileName: "assets/.env",
+      mergeWith: Platform.environment); //dotenv.env['BASE_URL'];
+
+  // OneSignalNotificationServices.instance.initializeOneSignalNotification();
+
+  // await Firebase.initializeApp();
 // changing system ui overflow color to transparent so that we can use our own custom color
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
@@ -52,11 +50,19 @@ Future<void> mainCommon() async {
   //disable Landscape mode
   await SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
+  //initializing hive
+  await _initializeHive();
 }
 
-class FasoWear extends ConsumerStatefulWidget {
-  const FasoWear({super.key});
+Future _initializeHive() async {
+  final directory = await getApplicationDocumentsDirectory();
+  Hive.init(directory.path);
+  //opening small boxes to synchronously fetch some important values
+  // await Hive.openBox(DbConstants.userProfileBox); // opening user information
+}
 
+class Application extends ConsumerStatefulWidget {
   @override
   ConsumerState createState() => ApplicationState();
 }
@@ -64,17 +70,25 @@ class FasoWear extends ConsumerStatefulWidget {
 // FirebaseAnalytics analytics = FirebaseAnalytics.instance;
 
 // final analyticsProvider =
-// Provider((ref) => FirebaseAnalytics.instance); //di injection
+//     Provider((ref) => FirebaseAnalytics.instance); //di injection
 
-class ApplicationState extends ConsumerState<FasoWear> {
+class ApplicationState extends ConsumerState<Application> {
   @override
   Widget build(BuildContext context) {
-    final _appRouter = ref.watch(routerProvider);
+    final _router = ref.watch(routerProvider);
     return MaterialApp.router(
       builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
       useInheritedMediaQuery: true,
       title: kAppName,
+      routerDelegate: AutoRouterDelegate(
+        _router,
+        navigatorObservers: () => [
+          SentryNavigatorObserver(),
+          MyRouteObserver(),
+        ],
+      ),
+      routeInformationParser: _router.defaultRouteParser(),
       locale: DevicePreview.locale(context),
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
@@ -84,16 +98,7 @@ class ApplicationState extends ConsumerState<FasoWear> {
       supportedLocales: const [
         Locale('en'),
       ],
-      theme: appTheme(),
-      routerDelegate: AutoRouterDelegate(
-        _appRouter,
-        navigatorObservers: () => [
-          SentryNavigatorObserver(),
-          MyRouteObserver(),
-          //FirebaseAnalyticsObserver(analytics: ref.watch(analyticsProvider)),
-        ],
-      ),
-      routeInformationParser: _appRouter.defaultRouteParser(),
+      // theme: appTheme(),
     );
   }
 }

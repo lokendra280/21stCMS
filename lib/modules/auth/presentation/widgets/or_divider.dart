@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/presentation/resources/colors.dart';
 
-
 class OrDivider extends StatelessWidget {
   const OrDivider({Key? key}) : super(key: key);
 
@@ -10,7 +9,7 @@ class OrDivider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 15),
-      width:double.infinity,
+      width: double.infinity,
       child: Row(
         children: <Widget>[
           buildDivider(),
@@ -27,9 +26,9 @@ class OrDivider extends StatelessWidget {
   }
 
   Expanded buildDivider() {
-    return  Expanded(
+    return Expanded(
       child: Divider(
-        color: primaryColor,
+        // color: primaryColor,
         height: 1.5,
       ),
     );

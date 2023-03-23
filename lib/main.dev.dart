@@ -11,9 +11,10 @@ import 'main_common.dart';
 
 Future<void> main() async {
   await mainCommon();
+  WidgetsFlutterBinding.ensureInitialized();
 
   runApp(DevicePreview(
     enabled: true,
-    builder: (context) => ProviderScope(child: FasoWear()),
+    builder: (context) => ProviderScope(child: Application()),
   ));
 }

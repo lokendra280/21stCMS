@@ -21,7 +21,7 @@ class NewPasswordPage extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
-        iconTheme: IconThemeData(color: primaryColor),
+        // iconTheme: IconThemeData(color: primaryColor),
         backgroundColor: Colors.white,
       ),
       body: SingleChildScrollView(
@@ -56,10 +56,7 @@ class NewPasswordPage extends StatelessWidget {
                       SBC.xLH,
                       Text(
                         'Reset Password',
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline6!
-                            .copyWith(color: primaryColor),
+                        style: Theme.of(context).textTheme.headline6!,
                       ),
                       SBC.lH,
                       Text(

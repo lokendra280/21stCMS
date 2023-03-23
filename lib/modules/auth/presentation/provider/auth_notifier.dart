@@ -10,7 +10,8 @@ class AuthNotifier extends StateNotifier<bool> {
   }
 
   checkAuth() async {
-    state = await repository.isAuthenticated(); //check authentication when initializing
+    state = await repository
+        .isAuthenticated(); //check authentication when initializing
   }
 
   authorize() async {
