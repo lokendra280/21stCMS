@@ -1,5 +1,6 @@
 import 'package:cms/core/data/remote/network_exceptions.dart';
 import 'package:cms/core/presentation/widget/empty_view.dart';
+import 'package:cms/modules/task/data/model/task_model.dart';
 import 'package:cms/modules/task/di/injection.dart';
 import 'package:cms/modules/task/presentation/notifier/task_info_notfier.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,6 +9,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../core/presentation/resources/size_constants.dart';
+import '../../../core/presentation/widget/base_widget.dart';
+import '../../../core/presentation/widget/shimmer_effect.dart';
 
 class TaskPage extends ConsumerWidget {
   const TaskPage({super.key});
@@ -18,9 +21,10 @@ class TaskPage extends ConsumerWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'Notices',
+          'Task',
           style: Theme.of(context).textTheme.bodyText2!.copyWith(
                 fontFamily: GoogleFonts.inter().fontFamily,
+                color: Colors.white,
               ),
         ),
         leading: const Icon(
@@ -34,13 +38,18 @@ class TaskPage extends ConsumerWidget {
           children: [
             Consumer(builder: (context, ref, child) {
               final state = ref.watch(taskInfoNotifier);
-              return state.when(data: (data){
-                return 
-              }, error: (error,stacktrace){
+              return state.when(data: (data) {
+                TaskModel taskModel = data;
+
+                return _TaskDetail(taskModel);
+              }, error: (error, stacktrace) {
                 return EmptyView(
-                  message: NetworkExceptions.getErrorMessage( error as NetworkExceptions), 
+                  message: NetworkExceptions.getErrorMessage(
+                      error as NetworkExceptions),
                 );
-              }, loading: loading)
+              }, loading: () {
+                return const Center(child: CircularProgressIndicator());
+              });
             })
           ],
         ),
@@ -48,15 +57,19 @@ class TaskPage extends ConsumerWidget {
     );
   }
 }
-class _TaskDetail extends StatelessWidget {
-  const _TaskDetail({super.key});
 
+class _TaskDetail extends StatelessWidget {
+  const _TaskDetail(
+    this.taskModel, {
+    Key? key,
+  }) : super(key: key);
+  final TaskModel taskModel;
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: 5,
-      itemBuilder: (context, index){
- return Padding(
+        itemCount: 5,
+        itemBuilder: (context, index) {
+          return Padding(
             padding:
                 const EdgeInsets.symmetric(horizontal: SC.lH, vertical: SC.mW),
             child: Container(
@@ -74,33 +87,43 @@ class _TaskDetail extends StatelessWidget {
                   ),
                 ],
               ),
-              child: Row(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Icon(
-                    Icons.notifications_active,
-                    size: 18,
-                  ),
                   Text(
-                    '',
+                    "${taskModel.data![index].heading}",
                     style: Theme.of(context).textTheme.caption!.copyWith(
                           fontFamily: GoogleFonts.inter().fontFamily,
                         ),
                   ),
                   Text(
-                    '',
+                    "${taskModel.data![index].description}",
                     style: Theme.of(context).textTheme.caption!.copyWith(
                           fontFamily: GoogleFonts.inter().fontFamily,
                         ),
                   ),
-                  const Icon(
-                    Icons.arrow_forward_ios_rounded,
-                    size: 18,
+                  Text(
+                    "${taskModel.data![index].startDate}",
+                    style: Theme.of(context).textTheme.caption!.copyWith(
+                          fontFamily: GoogleFonts.inter().fontFamily,
+                        ),
+                  ),
+                  Text(
+                    "${taskModel.data![index].dueDate}",
+                    style: Theme.of(context).textTheme.caption!.copyWith(
+                          fontFamily: GoogleFonts.inter().fontFamily,
+                        ),
+                  ),
+                  Text(
+                    "${taskModel.data![index].status}",
+                    style: Theme.of(context).textTheme.caption!.copyWith(
+                          fontFamily: GoogleFonts.inter().fontFamily,
+                        ),
                   ),
                 ],
               ),
             ),
           );
-    });
+        });
   }
 }

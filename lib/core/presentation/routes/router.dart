@@ -1,8 +1,10 @@
 import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:cms/modules/auth/presentation/screens/login_page.dart';
+import 'package:cms/modules/task/presentation/task.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../../../modules/Event/presentation/event_page.dart';
 import '../../../modules/dashboard/dashboard.dart';
 import '../../../modules/home/presentation/home.dart';
 import '../../../modules/notice/presentation/notic_page.dart';
@@ -17,6 +19,8 @@ import 'auth_guard.dart';
     AutoRoute(page: LoginPage),
     AutoRoute(page: HomePage),
     AutoRoute(page: NoticePage),
+    AutoRoute(page: EventPage),
+    AutoRoute(page: TaskPage),
     AutoRoute(
       path: 'profile',
       name: 'profileRouter',

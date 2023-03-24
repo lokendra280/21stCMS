@@ -127,7 +127,7 @@ class LoginPage extends ConsumerWidget {
                 PrimaryButton(
                   title: 'LOG IN',
                   onPressed: () {
-                    // context.router.navigate(const DashBoardScreen());
+                    context.router.navigate(const DashBoardScreen());
                     if (_formKey.currentState!.saveAndValidate()) {
                       ref
                           .read(loginProvider.notifier)

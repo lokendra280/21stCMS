@@ -14,7 +14,7 @@ class SplashPage extends StatelessWidget {
     //TODO: check for authenticity
 
     Future.delayed(const Duration(milliseconds: 3000), () {
-      context.router.push(LoginRoute());
+      context.router.push(TaskRoute());
     });
 
     return MaterialApp(

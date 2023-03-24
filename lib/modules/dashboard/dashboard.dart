@@ -15,8 +15,8 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../core/presentation/resources/size_constants.dart';
 import '../../core/presentation/resources/ui_assets.dart';
 import '../../core/presentation/widget/forms/buttons.dart';
+import '../Event/presentation/event_page.dart';
 import '../notification/presentation/notification.dart';
-import '../status/presentation/status_page.dart';
 import '../task/presentation/task.dart';
 import 'controller/dashboard_controller.dart';
 
@@ -46,7 +46,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   final List<Widget> dashboardWidgets = [
     HomePage(),
     const NoticePage(),
-    StatusPage(),
+    EventPage(),
     TaskPage(),
     ProfilePage(),
   ];
@@ -105,7 +105,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
               children: [
                 HomePage(),
                 NoticePage(),
-                StatusPage(),
+                EventPage(),
                 TaskPage(),
                 ProfilePage(),
               ],

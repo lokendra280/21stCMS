@@ -33,6 +33,8 @@ enum APIPath {
 
   // * api related to task
   Task,
+  //* api related to event
+  Event
 }
 
 class APIPathHelper {
@@ -72,6 +74,15 @@ class APIPathHelper {
     switch (path) {
       case APIPath.Task:
         return "v1/task";
+      default:
+        return "";
+    }
+  }
+
+  static String EventAPIs(APIPath path, {String? keyord}) {
+    switch (path) {
+      case APIPath.Event:
+        return "v1/event";
       default:
         return "";
     }

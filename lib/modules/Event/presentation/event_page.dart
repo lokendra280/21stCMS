@@ -7,8 +7,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../core/presentation/resources/size_constants.dart';
 
-class NoticePage extends ConsumerWidget {
-  const NoticePage({super.key});
+class EventPage extends ConsumerWidget {
+  const EventPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
