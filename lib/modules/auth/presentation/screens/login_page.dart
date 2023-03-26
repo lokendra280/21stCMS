@@ -31,43 +31,42 @@ class LoginPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(loginProvider);
-    ref
-      ..listen<ResultState>(loginProvider, (previous, next) {
-        next.maybeMap(
-            error: (error) => AppFlushBar.error(
-                context,
-                NetworkExceptions.getErrorMessage(
-                    error.error as NetworkExceptions)),
-            data: (_) {
-              CustomToast.success('Logged in Successfully');
-              context.router
-                  .pushAndPopUntil(DashBoardScreen(), predicate: (_) => false);
-              // fetch profile on login
-              if (authGuard == false) {
-                context.router.pop(true);
-              } else {
-                onLoginCallback!(true);
-              }
-            },
-            orElse: () {});
-      })
-      ..listen<ResultState>(socialLoginNotifier, (previous, next) {
-        next.maybeMap(
-            error: (error) => AppFlushBar.error(
-                context,
-                NetworkExceptions.getErrorMessage(
-                    error.error as NetworkExceptions)),
-            data: (_) {
-              CustomToast.success('Logged in successfully');
-              //fetch profile on login
-              if (authGuard == false) {
-                context.router.pop(true);
-              } else {
-                onLoginCallback!(true);
-              }
-            },
-            orElse: () {});
-      });
+    ref.listen<ResultState>(loginProvider, (previous, next) {
+      next.maybeMap(
+          error: (error) => AppFlushBar.error(
+              context,
+              NetworkExceptions.getErrorMessage(
+                  error.error as NetworkExceptions)),
+          data: (_) {
+            CustomToast.success('Logged in Successfully');
+            context.router
+                .pushAndPopUntil(HomeRoute(), predicate: (_) => false);
+            // fetch profile on login
+            if (authGuard == false) {
+              context.router.pop(true);
+            } else {
+              onLoginCallback!(true);
+            }
+          },
+          orElse: () {});
+    });
+    // ..listen<ResultState>(socialLoginNotifier, (previous, next) {
+    //   next.maybeMap(
+    //       error: (error) => AppFlushBar.error(
+    //           context,
+    //           NetworkExceptions.getErrorMessage(
+    //               error.error as NetworkExceptions)),
+    //       data: (_) {
+    //         CustomToast.success('Logged in successfully');
+    //         //fetch profile on login
+    //         if (authGuard == false) {
+    //           context.router.pop(true);
+    //         } else {
+    //           onLoginCallback!(true);
+    //         }
+    //       },
+    //       orElse: () {});
+    // });
     return Scaffold(
       body: SafeArea(
         child: FormBuilder(
@@ -127,7 +126,7 @@ class LoginPage extends ConsumerWidget {
                 PrimaryButton(
                   title: 'LOG IN',
                   onPressed: () {
-                    context.router.navigate(const DashBoardScreen());
+                    // context.router.navigate(const DashBoardScreen());
                     if (_formKey.currentState!.saveAndValidate()) {
                       ref
                           .read(loginProvider.notifier)

@@ -23,7 +23,7 @@ class LoginRemoteDataSourceImpl extends LoginRemoteDataSource {
           APIPathHelper.authAPIs(APIPath.login),
           options: Options(headers: {"requiresToken": false}),
           data: {
-            "username": params.email?.trim(),
+            "email": params.email?.trim(),
             "password": params.password?.trim(),
             "client_id": APIPathHelper.clientSecret,
             "client_secret": APIPathHelper.clientSecret

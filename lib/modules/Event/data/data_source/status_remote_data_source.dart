@@ -2,7 +2,7 @@ import 'package:cms/core/data/remote/api_endpoints.dart';
 import 'package:cms/core/data/remote/dio_client.dart';
 
 abstract class EventRemoteDataSource {
-  Future<dynamic> getStatusInfo();
+  Future<dynamic> getEventInfo();
 }
 
 class EventRemoteDataSourceImpl implements EventRemoteDataSource {
@@ -10,7 +10,7 @@ class EventRemoteDataSourceImpl implements EventRemoteDataSource {
 
   EventRemoteDataSourceImpl({required this.dioClient});
   @override
-  Future getStatusInfo() async {
+  Future getEventInfo() async {
     try {
       final response =
           await dioClient.authGet(APIPathHelper.authAPIs(APIPath.Event));

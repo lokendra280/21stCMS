@@ -1,3 +1,5 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:cms/core/presentation/routes/router.gr.dart';
 import 'package:cms/core/presentation/widget/forms/buttons.dart';
 import 'package:flutter/material.dart';
 
@@ -77,44 +79,6 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
 
-                  SBC.xxLH,
-                  Container(
-                    height: 50,
-                    padding: const EdgeInsets.symmetric(horizontal: SC.mH),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(9),
-                      boxShadow: [
-                        BoxShadow(
-                          blurStyle: BlurStyle.outer,
-                          color: Colors.grey.withOpacity(0.9),
-                          spreadRadius: 3,
-                          blurRadius: 7,
-                          offset:
-                              const Offset(0, 3), // changes position of shadow
-                        ),
-                      ],
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Icon(
-                          Icons.pool_rounded,
-                          size: 25,
-                        ),
-                        Text(
-                          'Total Project',
-                          style:
-                              Theme.of(context).textTheme.bodyText2!.copyWith(
-                                    fontFamily: GoogleFonts.inter().fontFamily,
-                                  ),
-                        ),
-                        const Icon(
-                          Icons.arrow_drop_down_rounded,
-                          size: 20,
-                        )
-                      ],
-                    ),
-                  ),
                   SBC.xLH,
                   Container(
                     height: 50,
@@ -132,25 +96,32 @@ class HomePage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Icon(
-                          Icons.task_alt_rounded,
-                          size: 25,
-                        ),
-                        Text(
-                          'Total Lead',
-                          style:
-                              Theme.of(context).textTheme.bodyText2!.copyWith(
-                                    fontFamily: GoogleFonts.inter().fontFamily,
-                                  ),
-                        ),
-                        const Icon(
-                          Icons.arrow_drop_down_rounded,
-                          size: 20,
-                        )
-                      ],
+                    child: InkWell(
+                      onTap: () {
+                        context.pushRoute(ProjectRoute());
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Icon(
+                            Icons.task_alt_rounded,
+                            size: 25,
+                          ),
+                          Text(
+                            'Total Project',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2!
+                                .copyWith(
+                                  fontFamily: GoogleFonts.inter().fontFamily,
+                                ),
+                          ),
+                          const Icon(
+                            Icons.arrow_drop_down_rounded,
+                            size: 20,
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ],

@@ -67,7 +67,7 @@ class _TaskDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        itemCount: 5,
+        itemCount: taskModel.data!.length,
         itemBuilder: (context, index) {
           return Padding(
             padding:

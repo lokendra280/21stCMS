@@ -18,8 +18,8 @@ class LoginNotifier extends StateNotifier<ResultState> {
 
   Future<void> login(LoginParams params) async {
     state = const Loading();
-    params.clientId = APIPathHelper.clientSecret;
-    params.clientSecret = APIPathHelper.clientSecret;
+    // params.clientId = APIPathHelper.clientSecret;
+    // params.clientSecret = APIPathHelper.clientSecret;
     final response = await _loginRepository.loginUser(params);
     response.when(success: (data) {
       ref.read(authProvider).authorize();

@@ -9,6 +9,7 @@ import '../../../modules/dashboard/dashboard.dart';
 import '../../../modules/home/presentation/home.dart';
 import '../../../modules/notice/presentation/notic_page.dart';
 import '../../../modules/profile/presentation/profile_page.dart';
+import '../../../modules/project/presentation/project_page.dart';
 import '../../../modules/splash_page/presentation/splash_page.dart';
 import 'auth_guard.dart';
 
@@ -21,6 +22,7 @@ import 'auth_guard.dart';
     AutoRoute(page: NoticePage),
     AutoRoute(page: EventPage),
     AutoRoute(page: TaskPage),
+    AutoRoute(page: ProjectPage),
     AutoRoute(
       path: 'profile',
       name: 'profileRouter',

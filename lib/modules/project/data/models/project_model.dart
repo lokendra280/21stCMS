@@ -1,10 +1,10 @@
-class Project {
+class ProjectModel {
   List<Data>? data;
   Meta? meta;
 
-  Project({this.data, this.meta});
+  ProjectModel({this.data, this.meta});
 
-  Project.fromJson(Map<String, dynamic> json) {
+  ProjectModel.fromJson(Map<String, dynamic> json) {
     if (json['data'] != null) {
       data = <Data>[];
       json['data'].forEach((v) {
@@ -28,8 +28,8 @@ class Project {
 
 class Data {
   int? id;
-  String? projectName;
-  String? projectSummary;
+  String? ProjectModelName;
+  String? ProjectModelSummary;
   String? notes;
   String? startDate;
   String? deadline;
@@ -39,8 +39,8 @@ class Data {
 
   Data(
       {this.id,
-      this.projectName,
-      this.projectSummary,
+      this.ProjectModelName,
+      this.ProjectModelSummary,
       this.notes,
       this.startDate,
       this.deadline,
@@ -50,8 +50,8 @@ class Data {
 
   Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    projectName = json['project_name'];
-    projectSummary = json['project_summary'];
+    ProjectModelName = json['ProjectModel_name'];
+    ProjectModelSummary = json['ProjectModel_summary'];
     notes = json['notes'];
     startDate = json['start_date'];
     deadline = json['deadline'];
@@ -66,8 +66,8 @@ class Data {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
-    data['project_name'] = this.projectName;
-    data['project_summary'] = this.projectSummary;
+    data['ProjectModel_name'] = this.ProjectModelName;
+    data['ProjectModel_summary'] = this.ProjectModelSummary;
     data['notes'] = this.notes;
     data['start_date'] = this.startDate;
     data['deadline'] = this.deadline;

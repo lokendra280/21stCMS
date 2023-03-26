@@ -1,16 +1,22 @@
-// import 'package:cms/core/app_error/app_error.dart';
-// import 'package:cms/core/data/remote/api_endpoints.dart';
-// import 'package:cms/core/data/remote/api_result.dart';
-// import 'package:cms/modules/project/data/models/project_model.dart';
-// import 'package:dartz/dartz.dart';
+import 'package:cms/core/data/remote/api_endpoints.dart';
+import 'package:cms/core/data/remote/dio_client.dart';
 
-// abstract class ProjectRemoteDataSource {
-//   Future<Either<AppError, Project>> getProject();
-// }
-// class ProjectRemoteDataSourceImpl implements ProjectRemoteDataSource{
-//   @override
-//   Future<Either<AppError, Project>> getProject() async {
-//     final result = await APIPath.project
-//   }
+abstract class ProjectRemoteDataSource {
+  Future<dynamic> getProjectInfo();
+}
 
-// } 
+class TaskRemoteDataSourceImpl implements ProjectRemoteDataSource {
+  late DioClient dioClient;
+
+  TaskRemoteDataSourceImpl({required this.dioClient});
+  @override
+  Future getProjectInfo() async {
+    try {
+      final response =
+          await dioClient.authGet(APIPathHelper.authAPIs(APIPath.project));
+      return response;
+    } catch (e) {
+      rethrow;
+    }
+  }
+}
