@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cms/modules/project/di/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -47,7 +48,7 @@ class ProfileUpdatePage extends StatelessWidget {
           children: [
             Consumer(
               builder: (context, ref, child) {
-                final state = ref.watch(profileInfoNotifier);
+                final state = ref.watch(projectInfoNotifier);
                 return state.when(data: (data) {
                   ProfileInfo profile = data;
 
@@ -108,7 +109,7 @@ class ProfileDetail extends StatelessWidget {
                     // initialValue: ,
                     label: "First Name *",
                     onSaved: (newValue) {
-                      _updateProfile.firstName = newValue;
+                      // _updateProfile.firstName = newValue;
                     },
                   ),
                   SBC.mH,
@@ -186,21 +187,21 @@ class _ProfileInfoHeader extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "${profile.firstName} ${profile.lastName}",
+                            "${profile.data?.user?.name}",
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyText1!
                                 .copyWith(color: Colors.white),
                           ),
                           SBC.sH,
-                          if (profile.email != null)
-                            Text(
-                              "${profile.email}",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText2!
-                                  .copyWith(color: Colors.white),
-                            ),
+                          // if (profile.email != null)
+                          //   Text(
+                          //     "${profile.email}",
+                          //     style: Theme.of(context)
+                          //         .textTheme
+                          //         .bodyText2!
+                          //         .copyWith(color: Colors.white),
+                          //   ),
                           SBC.sH,
                           Row(
                             children: [

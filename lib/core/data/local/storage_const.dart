@@ -1,10 +1,4 @@
-/// Author:    Bibek Baidya
-/// Created:   20.12.2022
-/// Description:
-/// (c) Copyright by supremeitsolutions.com.
-///*/
-
-class LocalStorageConst{
+class LocalStorageConst {
   static const kAccessToken = 'ACCESS_TOKEN';
   static const kRefreshToken = 'REFRESH_TOKEN';
   static const kIsFirstTime = 'ISFIRST_TIME';

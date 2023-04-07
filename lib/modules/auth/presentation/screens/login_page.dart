@@ -31,6 +31,7 @@ class LoginPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(loginProvider);
+
     ref.listen<ResultState>(loginProvider, (previous, next) {
       next.maybeMap(
           error: (error) => AppFlushBar.error(
@@ -39,8 +40,9 @@ class LoginPage extends ConsumerWidget {
                   error.error as NetworkExceptions)),
           data: (_) {
             CustomToast.success('Logged in Successfully');
-            context.router
-                .pushAndPopUntil(HomeRoute(), predicate: (_) => false);
+            context.router.pushAndPopUntil(
+                DashBoardScreen(children: [HomeRouter()]),
+                predicate: (_) => false);
             // fetch profile on login
             if (authGuard == false) {
               context.router.pop(true);
@@ -89,7 +91,7 @@ class LoginPage extends ConsumerWidget {
                 SecondaryTextField(
                   fillColor: Colors.transparent,
                   hintTxt: "Email Address",
-                  textInputType: TextInputType.text,
+                  textInputType: TextInputType.emailAddress,
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(
                         errorText: "Email is required"),

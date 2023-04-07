@@ -77,23 +77,23 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
     }
   }
 
-  @override
-  Future uploadImage(XFile pickedFile) async {
-    try {
-      final response = await dioClient.authMultiPartPost(
-        APIPathHelper.categoryImageUrl(APIPath.profilePic.name),
-        data: FormData.fromMap(
-          {
-            "file": await MultipartFile.fromFile(pickedFile.path,
-                filename: pickedFile.path.toString()),
-          },
-        ),
-      );
-      return ImageUploadParams.fromJson(response[0]);
-    } catch (e) {
-      rethrow;
-    }
-  }
+  // @override
+  // Future uploadImage(XFile pickedFile) async {
+  //   try {
+  //     final response = await dioClient.authMultiPartPost(
+  //       APIPathHelper.assetManager(APIPath.imageUpload),
+  //       data: FormData.fromMap(
+  //         {
+  //           "file": await MultipartFile.fromFile(pickedFile.path,
+  //               filename: pickedFile.path.toString()),
+  //         },
+  //       ),
+  //     );
+  //     return ImageUploadParams.fromJson(response[0]);
+  //   } catch (e) {
+  //     rethrow;
+  //   }
+  // }
 
   @override
   Future removeAccount() async {
@@ -105,5 +105,11 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
     } catch (e) {
       rethrow;
     }
+  }
+
+  @override
+  Future uploadImage(XFile pickedFile) {
+    // TODO: implement uploadImage
+    throw UnimplementedError();
   }
 }

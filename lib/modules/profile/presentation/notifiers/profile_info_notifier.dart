@@ -17,11 +17,11 @@ class ProfileInfoNotifier extends StateNotifier<AsyncValue> {
   Future<void> getProfileInfo() async {
     state = const AsyncLoading();
     final response = await repo.getUserProfile();
-    // response.when(success: (data) {
-    //   state = AsyncData(data);
-    // }, failure: (error) {
-    //   state = AsyncError(error as NetworkExceptions);
-    // });
+    response.when(success: (data) {
+      state = AsyncData(data);
+    }, failure: (error) {
+      state = AsyncError(error as NetworkExceptions);
+    });
   }
 }
 

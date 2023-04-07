@@ -18,15 +18,15 @@ class LoginNotifier extends StateNotifier<ResultState> {
 
   Future<void> login(LoginParams params) async {
     state = const Loading();
-    // params.clientId = APIPathHelper.clientSecret;
-    // params.clientSecret = APIPathHelper.clientSecret;
+    params.clientId = APIPathHelper.clientSecret;
+    params.clientSecret = APIPathHelper.clientSecret;
     final response = await _loginRepository.loginUser(params);
     response.when(success: (data) {
       ref.read(authProvider).authorize();
       ref
           .read(profileInfoNotifier.notifier)
           .getProfileInfo(); //fetch profile on login
-      //ref.read(cartCountNotifier.notifier).fetchCartCount();
+      // ref.read(cartCountNotifier.notifier).fetchCartCount();
       state = Data(
         data: data,
       );
@@ -59,7 +59,7 @@ class SocialLoginNotifier extends StateNotifier<ResultState> {
     }
     response.when(success: (data) {
       ref.read(authProvider).authorize();
-      ref.read(profileInfoNotifier.notifier).getProfileInfo();
+      // ref.read(profileInfoNotifier.notifier).getProfileInfo();
       // ref.read(cartCounterNotifier.notifier).fetchCartCount();
       state = Data(data: data);
     }, failure: (error) {

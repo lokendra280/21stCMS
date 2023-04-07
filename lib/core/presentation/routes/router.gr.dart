@@ -16,14 +16,14 @@ import 'package:flutter/cupertino.dart' as _i13;
 import 'package:flutter/material.dart' as _i11;
 
 import '../../../modules/auth/presentation/screens/login_page.dart' as _i2;
-import '../../../modules/dashboard/dashboard.dart' as _i9;
-import '../../../modules/Event/presentation/event_page.dart' as _i5;
-import '../../../modules/home/presentation/home.dart' as _i3;
-import '../../../modules/notice/presentation/notic_page.dart' as _i4;
-import '../../../modules/profile/presentation/profile_page.dart' as _i8;
-import '../../../modules/project/presentation/project_page.dart' as _i7;
+import '../../../modules/dashboard/dashboard.dart' as _i8;
+import '../../../modules/Event/presentation/event_page.dart' as _i4;
+import '../../../modules/home/presentation/home.dart' as _i9;
+import '../../../modules/notice/presentation/notic_page.dart' as _i3;
+import '../../../modules/profile/presentation/profile_page.dart' as _i7;
+import '../../../modules/project/presentation/project_page.dart' as _i6;
 import '../../../modules/splash_page/presentation/splash_page.dart' as _i1;
-import '../../../modules/task/presentation/task.dart' as _i6;
+import '../../../modules/task/presentation/task.dart' as _i5;
 import 'auth_guard.dart' as _i12;
 
 class AppRouter extends _i10.RootStackRouter {
@@ -54,48 +54,40 @@ class AppRouter extends _i10.RootStackRouter {
         ),
       );
     },
-    HomeRoute.name: (routeData) {
-      final args =
-          routeData.argsAs<HomeRouteArgs>(orElse: () => const HomeRouteArgs());
-      return _i10.MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: _i3.HomePage(key: args.key),
-      );
-    },
     NoticeRoute.name: (routeData) {
       return _i10.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i4.NoticePage(),
+        child: const _i3.NoticePage(),
       );
     },
     EventRoute.name: (routeData) {
       return _i10.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i5.EventPage(),
+        child: const _i4.EventPage(),
       );
     },
     TaskRoute.name: (routeData) {
       return _i10.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i6.TaskPage(),
+        child: const _i5.TaskPage(),
       );
     },
     ProjectRoute.name: (routeData) {
       return _i10.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i7.ProjectPage(),
+        child: const _i6.ProjectPage(),
       );
     },
     ProfileRouter.name: (routeData) {
       return _i10.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: _i8.ProfilePage(),
+        child: _i7.ProfilePage(),
       );
     },
     DashBoardScreen.name: (routeData) {
       return _i10.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i9.DashBoardScreen(),
+        child: const _i8.DashBoardScreen(),
       );
     },
     HomeRouter.name: (routeData) {
@@ -103,7 +95,7 @@ class AppRouter extends _i10.RootStackRouter {
           orElse: () => const HomeRouterArgs());
       return _i10.CustomPage<dynamic>(
         routeData: routeData,
-        child: _i3.HomePage(key: args.key),
+        child: _i9.HomePage(key: args.key),
         transitionsBuilder: _i10.TransitionsBuilders.slideTop,
         opaque: true,
         barrierDismissible: false,
@@ -120,10 +112,6 @@ class AppRouter extends _i10.RootStackRouter {
         _i10.RouteConfig(
           LoginRoute.name,
           path: '/login-page',
-        ),
-        _i10.RouteConfig(
-          HomeRoute.name,
-          path: '/home-page',
         ),
         _i10.RouteConfig(
           NoticeRoute.name,
@@ -212,31 +200,7 @@ class LoginRouteArgs {
 }
 
 /// generated route for
-/// [_i3.HomePage]
-class HomeRoute extends _i10.PageRouteInfo<HomeRouteArgs> {
-  HomeRoute({_i13.Key? key})
-      : super(
-          HomeRoute.name,
-          path: '/home-page',
-          args: HomeRouteArgs(key: key),
-        );
-
-  static const String name = 'HomeRoute';
-}
-
-class HomeRouteArgs {
-  const HomeRouteArgs({this.key});
-
-  final _i13.Key? key;
-
-  @override
-  String toString() {
-    return 'HomeRouteArgs{key: $key}';
-  }
-}
-
-/// generated route for
-/// [_i4.NoticePage]
+/// [_i3.NoticePage]
 class NoticeRoute extends _i10.PageRouteInfo<void> {
   const NoticeRoute()
       : super(
@@ -248,7 +212,7 @@ class NoticeRoute extends _i10.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i5.EventPage]
+/// [_i4.EventPage]
 class EventRoute extends _i10.PageRouteInfo<void> {
   const EventRoute()
       : super(
@@ -260,7 +224,7 @@ class EventRoute extends _i10.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i6.TaskPage]
+/// [_i5.TaskPage]
 class TaskRoute extends _i10.PageRouteInfo<void> {
   const TaskRoute()
       : super(
@@ -272,7 +236,7 @@ class TaskRoute extends _i10.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i7.ProjectPage]
+/// [_i6.ProjectPage]
 class ProjectRoute extends _i10.PageRouteInfo<void> {
   const ProjectRoute()
       : super(
@@ -284,7 +248,7 @@ class ProjectRoute extends _i10.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i8.ProfilePage]
+/// [_i7.ProfilePage]
 class ProfileRouter extends _i10.PageRouteInfo<void> {
   const ProfileRouter()
       : super(
@@ -296,7 +260,7 @@ class ProfileRouter extends _i10.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i9.DashBoardScreen]
+/// [_i8.DashBoardScreen]
 class DashBoardScreen extends _i10.PageRouteInfo<void> {
   const DashBoardScreen({List<_i10.PageRouteInfo>? children})
       : super(
@@ -309,7 +273,7 @@ class DashBoardScreen extends _i10.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i3.HomePage]
+/// [_i9.HomePage]
 class HomeRouter extends _i10.PageRouteInfo<HomeRouterArgs> {
   HomeRouter({_i13.Key? key})
       : super(

@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cms/modules/project/di/injection.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -59,7 +60,7 @@ class ProfilePage extends ConsumerWidget {
           child: Column(children: [
             Consumer(
               builder: (context, ref, child) {
-                final state = ref.watch(profileInfoNotifier);
+                final state = ref.watch(projectInfoNotifier);
                 return state.when(data: (data) {
                   ProfileInfo profile = data;
                   return _ProfileInfoHeader(profile);
@@ -128,18 +129,18 @@ class _ProfileInfoHeader extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "${profile.firstName} ${profile.lastName}",
+                            "${profile.data?.user?.name}",
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyText1!
                                 .copyWith(),
                           ),
                           SBC.sH,
-                          if (profile.email != null)
-                            Text(
-                              "${profile.email}",
-                              style: Theme.of(context).textTheme.bodyText2,
-                            ),
+                          // if (profile.email != null)
+                          //   Text(
+                          //     "${profile.email}",
+                          //     style: Theme.of(context).textTheme.bodyText2,
+                          //   ),
                           SBC.sH,
                           Row(
                             children: [

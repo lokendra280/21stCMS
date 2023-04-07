@@ -1,30 +1,33 @@
 class ProfileUpdateReqParams {
   ProfileUpdateReqParams({
-    this.firstName,
-    this.lastName,
-    this.middleName,
-    this.avatar,
+    this.name,
     this.email,
-    this.phone,
-    this.address,
+    this.image,
+    this.mobile,
+    this.gender,
+    this.locale,
+    this.login,
   });
-  String? firstName;
-  String? lastName;
-  String? middleName;
-  String? avatar;
+  String? name;
   String? email;
-  String? phone;
-  String? address;
+  String? image;
+  String? mobile;
+  String? gender;
+  String? locale;
+  String? status;
+  String? login;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    map['firstName'] = firstName;
-    map['lastName'] = lastName;
-    if(middleName!=null) map['middleName'] = middleName;
-   if(avatar!=null) map['avatar'] = avatar;
-    if(email!=null)    map['email'] = email;
-    if(phone!=null)   map['phone'] = phone;
-    if(address!=null)  map['address'] = address;
+    map['name'] = name;
+    map['email'] = email;
+    if (image != null) map['image'] = image;
+    if (mobile != null) map['mobile'] = mobile;
+    if (gender != null) map['gender'] = gender;
+    if (locale != null) map['phone'] = locale;
+    if (status != null) map['address'] = status;
+    if (login != null) map['address'] = login;
+
     return map;
   }
 }

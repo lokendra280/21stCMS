@@ -29,9 +29,10 @@ class LoginRemoteDataSourceImpl extends LoginRemoteDataSource {
             "client_secret": APIPathHelper.clientSecret
           });
       return getToken(
-          code: response['code'],
-          clientId: APIPathHelper.clientSecret,
-          email: params.email!);
+        code: response['code'],
+        clientId: APIPathHelper.clientSecret,
+        email: params.email!,
+      );
     } catch (e) {
       rethrow;
     }

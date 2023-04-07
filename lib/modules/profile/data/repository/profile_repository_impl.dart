@@ -73,7 +73,8 @@ class ProfileRepositoryImpl extends ProfileRepository {
       try {
         final remoteData = await remoteDataSource.updateProfilePic(pickedFile);
         if (remoteData == null)
-          return const ApiResult.failure(error: NetworkExceptions.defaultError('Something went wrong'));
+          return const ApiResult.failure(
+              error: NetworkExceptions.defaultError('Something went wrong'));
         return ApiResult.success(data: NetworkImageModel.fromJson(remoteData));
       } catch (e) {
         if (e is DioError && e.type == DioErrorType.response) {
@@ -100,7 +101,9 @@ class ProfileRepositoryImpl extends ProfileRepository {
         final remoteData = await remoteDataSource.changePassword(reqParams);
         return ApiResult.success(data: remoteData);
       } catch (e) {
-        if (e is DioError && e.type == DioErrorType.response && e.response?.data!=null) {
+        if (e is DioError &&
+            e.type == DioErrorType.response &&
+            e.response?.data != null) {
           return ApiResult.failure(
               error: NetworkExceptions.defaultError(
                   e.response?.data['error']['message']));
@@ -117,13 +120,15 @@ class ProfileRepositoryImpl extends ProfileRepository {
   }
 
   @override
-  Future<ApiResult<String?>> removeAccount() async{
+  Future<ApiResult<String?>> removeAccount() async {
     if (await networkInfo.isConnected) {
       try {
         final remoteData = await remoteDataSource.removeAccount();
         return ApiResult.success(data: remoteData);
       } catch (e) {
-        if (e is DioError && e.type == DioErrorType.response && e.response?.data!=null) {
+        if (e is DioError &&
+            e.type == DioErrorType.response &&
+            e.response?.data != null) {
           return ApiResult.failure(
               error: NetworkExceptions.defaultError(
                   e.response?.data['error']['message']));

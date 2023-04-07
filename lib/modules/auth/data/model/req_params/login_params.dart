@@ -1,20 +1,20 @@
 class LoginParams {
-  // String? clientId;
-  // String? clientSecret;
+  String? clientId;
+  String? clientSecret;
   String? email;
   String? password;
 
   LoginParams({
-    // this.clientId,
-    // this.clientSecret,
+    this.clientId,
+    this.clientSecret,
     this.email,
     this.password,
   });
 
   Map<String, dynamic> toJsonLogin() {
     final map = <String, dynamic>{};
-    // map["client_id"] = clientId;
-    // map["client_secret"] = clientSecret;
+    map["client_id"] = clientId;
+    map["client_secret"] = clientSecret;
     map["email"] = email;
     map["password"] = password;
     return map;

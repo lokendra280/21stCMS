@@ -18,7 +18,6 @@ import 'auth_guard.dart';
   routes: <AutoRoute>[
     AutoRoute(page: SplashPage, initial: true),
     AutoRoute(page: LoginPage),
-    AutoRoute(page: HomePage),
     AutoRoute(page: NoticePage),
     AutoRoute(page: EventPage),
     AutoRoute(page: TaskPage),
