@@ -18,8 +18,6 @@ class LoginNotifier extends StateNotifier<ResultState> {
 
   Future<void> login(LoginParams params) async {
     state = const Loading();
-    params.clientId = APIPathHelper.clientSecret;
-    params.clientSecret = APIPathHelper.clientSecret;
     final response = await _loginRepository.loginUser(params);
     response.when(success: (data) {
       ref.read(authProvider).authorize();
@@ -27,9 +25,6 @@ class LoginNotifier extends StateNotifier<ResultState> {
           .read(profileInfoNotifier.notifier)
           .getProfileInfo(); //fetch profile on login
       // ref.read(cartCountNotifier.notifier).fetchCartCount();
-      state = Data(
-        data: data,
-      );
     }, failure: (error) {
       state = Error(error: error as NetworkExceptions);
     });
@@ -39,35 +34,3 @@ class LoginNotifier extends StateNotifier<ResultState> {
 final loginProvider =
     StateNotifierProvider.autoDispose<LoginNotifier, ResultState>(
         (ref) => LoginNotifier(ref, ref.watch(loginRepositoryProvider)));
-
-class SocialLoginNotifier extends StateNotifier<ResultState> {
-  final LoginRepository _loginRepository;
-  final Ref ref;
-
-  SocialLoginNotifier(this.ref, this._loginRepository) : super(const Idle());
-
-  Future<void> login(SocialLoginType loginType) async {
-    state = const Loading();
-    ApiResult<String?> response;
-    if (loginType == SocialLoginType.facebook) {
-      response = await _loginRepository.loginWithFacebook();
-    }
-    if (loginType == SocialLoginType.apple) {
-      response = await _loginRepository.loginWithApple();
-    } else {
-      response = await _loginRepository.loginWithGoogle();
-    }
-    response.when(success: (data) {
-      ref.read(authProvider).authorize();
-      // ref.read(profileInfoNotifier.notifier).getProfileInfo();
-      // ref.read(cartCounterNotifier.notifier).fetchCartCount();
-      state = Data(data: data);
-    }, failure: (error) {
-      state = Error(error: error as NetworkExceptions);
-    });
-  }
-}
-
-final socialLoginNotifier =
-    StateNotifierProvider.autoDispose<SocialLoginNotifier, ResultState>(
-        (ref) => SocialLoginNotifier(ref, ref.watch(loginRepositoryProvider)));

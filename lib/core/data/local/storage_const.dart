@@ -9,19 +9,19 @@ class LocalStorageConst {
 
 // class StorageUtil {
 //   static late final SharedPreferences instance;
-//
+
 //   static Future<SharedPreferences> init() async {
 //   return  instance = await SharedPreferences.getInstance();
 //   }
-//
-//
+
+
 //   // Getter
 //   static bool getBool(String key) => instance.getBool(key) ?? true;
-//
+
 // // Setter
 //   static Future<bool> setBool(String key, bool value) => instance.setBool(key, value);
-//
+
 //   static Future<bool> setString(String key, String value) => instance.setString(key, value);
-//
+
 //   static String? getString(String key) => instance.getString(key);
 // }

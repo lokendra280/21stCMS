@@ -30,51 +30,51 @@ class ChangePasswordNotifier extends StateNotifier<AsyncValue> {
 
   ChangePasswordNotifier({required this.repo}) : super(const AsyncData(''));
 
-  Future<void> changePassword(ChangePasswordParams params) async {
-    state = const AsyncLoading();
-    final response = await repo.changePassword(params);
-    // response.when(success: (data) {
-    //   state = AsyncData(data);
-    // }, failure: (error) {
-    //   state = AsyncError(error as NetworkExceptions);
-    // });
-  }
+  // Future<void> changePassword(ChangePasswordParams params) async {
+  //   state = const AsyncLoading();
+  //   final response = await repo.changePassword(params);
+  //   // response.when(success: (data) {
+  //   //   state = AsyncData(data);
+  //   // }, failure: (error) {
+  //   //   state = AsyncError(error as NetworkExceptions);
+  //   // });
+  // }
 }
 
-class UpdateProfileNotifier extends StateNotifier<AsyncValue> {
-  final ProfileRepository repo;
-  final Ref ref;
+// class UpdateProfileNotifier extends StateNotifier<AsyncValue> {
+//   final ProfileRepository repo;
+//   final Ref ref;
 
-  UpdateProfileNotifier({required this.repo, required this.ref})
-      : super(const AsyncData(''));
+//   UpdateProfileNotifier({required this.repo, required this.ref})
+//       : super(const AsyncData(''));
 
-  Future<void> updateProfile(ProfileUpdateReqParams params) async {
-    state = const AsyncLoading();
-    final response = await repo.updateProfile(params);
-    // response.when(success: (data) {
-    //   ref.read(profileInfoNotifier.notifier).getProfileInfo();
-    //   state = AsyncData(data);
-    // }, failure: (error) {
-    //   state = AsyncError(error as NetworkExceptions);
-    // });
-  }
-}
+//   Future<void> updateProfile(ProfileUpdateReqParams params) async {
+//     state = const AsyncLoading();
+//     final response = await repo.updateProfile(params);
+//     // response.when(success: (data) {
+//     //   ref.read(profileInfoNotifier.notifier).getProfileInfo();
+//     //   state = AsyncData(data);
+//     // }, failure: (error) {
+//     //   state = AsyncError(error as NetworkExceptions);
+//     // });
+//   }
+// }
 
-class UpdateProfilePicNotifier extends StateNotifier<AsyncValue> {
-  final ProfileRepository repo;
-  final Ref ref;
+// class UpdateProfilePicNotifier extends StateNotifier<AsyncValue> {
+//   final ProfileRepository repo;
+//   final Ref ref;
 
-  UpdateProfilePicNotifier({required this.repo, required this.ref})
-      : super(const AsyncData(''));
+//   UpdateProfilePicNotifier({required this.repo, required this.ref})
+//       : super(const AsyncData(''));
 
-  Future<void> updateProfilePic(XFile file) async {
-    state = const AsyncLoading();
-    final response = await repo.updateProfilePic(file);
-    // response.when(success: (data) {
-    //   ref.read(profileInfoNotifier.notifier).getProfileInfo();
-    //   state = AsyncData(data);
-    // }, failure: (error) {
-    //   state = AsyncError(error as NetworkExceptions);
-    // });
-  }
-}
+//   Future<void> updateProfilePic(XFile file) async {
+//     state = const AsyncLoading();
+//     final response = await repo.updateProfilePic(file);
+//     // response.when(success: (data) {
+//     //   ref.read(profileInfoNotifier.notifier).getProfileInfo();
+//     //   state = AsyncData(data);
+//     // }, failure: (error) {
+//     //   state = AsyncError(error as NetworkExceptions);
+//     // });
+//   }
+// }

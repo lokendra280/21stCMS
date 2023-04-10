@@ -10,20 +10,8 @@ enum APIPath {
   // * Auth apis
   login,
   logOut,
-
-  registration,
-  socialLogin,
-  sendOTPResetPwd,
-  resetPassword,
-  changePassword,
-  sendOTPRegister,
   refreshToken,
   authToken,
-  removeAccount,
-  profileInfo,
-  updateProfile,
-  profilePic,
-  imageUpload,
 
   // * notice related api
   notice,
@@ -58,8 +46,8 @@ class APIPathHelper {
   //* Splash Images
 
   // static final String clientId = dotenv.env['CLIENT_ID'] ?? "";
-  static final String clientSecret =
-      dotenv.env['CLIENT_SECRET'] ?? ""; // global api base url
+  static final String clientSecret = dotenv.env['CLIENT_SECRET'] ??
+      "https://21stcms.com/api/v1"; // global api base url
 
   static String projectAPIs(APIPath path, {String? keyword}) {
     switch (path) {
@@ -105,28 +93,10 @@ class APIPathHelper {
         return "/auth/logout";
       case APIPath.authToken:
         return "/auth/token";
-      case APIPath.removeAccount:
-        return "/remove/account";
+
       case APIPath.refreshToken:
         return "/auth/refresh-token";
-      case APIPath.registration:
-        return "/register/customer";
-      case APIPath.socialLogin:
-        return "/social/login";
-      case APIPath.sendOTPRegister:
-        return "/register/send-otp";
-      case APIPath.sendOTPResetPwd:
-        return "/reset-password/sendotp";
-      case APIPath.resetPassword:
-        return "/reset-password";
-      case APIPath.changePassword:
-        return "/change-password";
-      case APIPath.profileInfo:
-        return "/users/me";
-      case APIPath.updateProfile:
-        return "/profile/update";
-      case APIPath.profilePic:
-        return "/profile-image";
+
       default:
         return "";
     }

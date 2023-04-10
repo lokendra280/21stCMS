@@ -42,105 +42,105 @@ class ProfileRepositoryImpl extends ProfileRepository {
     }
   }
 
-  @override
-  Future<ApiResult> updateProfile(ProfileUpdateReqParams reqParams) async {
-    if (await networkInfo.isConnected) {
-      try {
-        final remoteData = await remoteDataSource.updateProfile(reqParams);
-        return ApiResult.success(data: remoteData);
-      } catch (e) {
-        if (e is DioError && e.type == DioErrorType.response) {
-          return ApiResult.failure(
-              error: NetworkExceptions.defaultError(
-                  e.response?.data['error']['message']));
-        } else {
-          print(e.toString());
-          return ApiResult.failure(error: NetworkExceptions.getDioException(e));
-          // return ApiResult.failure(error: NetworkExceptions.getDioException(e));
-        }
-      }
-    } else {
-      //Or fetch data locally
-      return const ApiResult.failure(
-          error: NetworkExceptions.noInternetConnection());
-    }
-  }
+  // @override
+  // Future<ApiResult> updateProfile(ProfileUpdateReqParams reqParams) async {
+  //   if (await networkInfo.isConnected) {
+  //     try {
+  //       final remoteData = await remoteDataSource.updateProfile(reqParams);
+  //       return ApiResult.success(data: remoteData);
+  //     } catch (e) {
+  //       if (e is DioError && e.type == DioErrorType.response) {
+  //         return ApiResult.failure(
+  //             error: NetworkExceptions.defaultError(
+  //                 e.response?.data['error']['message']));
+  //       } else {
+  //         print(e.toString());
+  //         return ApiResult.failure(error: NetworkExceptions.getDioException(e));
+  //         // return ApiResult.failure(error: NetworkExceptions.getDioException(e));
+  //       }
+  //     }
+  //   } else {
+  //     //Or fetch data locally
+  //     return const ApiResult.failure(
+  //         error: NetworkExceptions.noInternetConnection());
+  //   }
+  // }
 
-  @override
-  Future<ApiResult<NetworkImageModel>> updateProfilePic(
-      XFile pickedFile) async {
-    if (await networkInfo.isConnected) {
-      try {
-        final remoteData = await remoteDataSource.updateProfilePic(pickedFile);
-        if (remoteData == null)
-          return const ApiResult.failure(
-              error: NetworkExceptions.defaultError('Something went wrong'));
-        return ApiResult.success(data: NetworkImageModel.fromJson(remoteData));
-      } catch (e) {
-        if (e is DioError && e.type == DioErrorType.response) {
-          return ApiResult.failure(
-              error: NetworkExceptions.defaultError(
-                  e.response?.data['error']['message']));
-        } else {
-          print(e.toString());
-          return ApiResult.failure(error: NetworkExceptions.getDioException(e));
-          // return ApiResult.failure(error: NetworkExceptions.getDioException(e));
-        }
-      }
-    } else {
-      //Or fetch data locally
-      return const ApiResult.failure(
-          error: NetworkExceptions.noInternetConnection());
-    }
-  }
+  // @override
+  // Future<ApiResult<NetworkImageModel>> updateProfilePic(
+  //     XFile pickedFile) async {
+  //   if (await networkInfo.isConnected) {
+  //     try {
+  //       final remoteData = await remoteDataSource.updateProfilePic(pickedFile);
+  //       if (remoteData == null)
+  //         return const ApiResult.failure(
+  //             error: NetworkExceptions.defaultError('Something went wrong'));
+  //       return ApiResult.success(data: NetworkImageModel.fromJson(remoteData));
+  //     } catch (e) {
+  //       if (e is DioError && e.type == DioErrorType.response) {
+  //         return ApiResult.failure(
+  //             error: NetworkExceptions.defaultError(
+  //                 e.response?.data['error']['message']));
+  //       } else {
+  //         print(e.toString());
+  //         return ApiResult.failure(error: NetworkExceptions.getDioException(e));
+  //         // return ApiResult.failure(error: NetworkExceptions.getDioException(e));
+  //       }
+  //     }
+  //   } else {
+  //     //Or fetch data locally
+  //     return const ApiResult.failure(
+  //         error: NetworkExceptions.noInternetConnection());
+  //   }
+  // }
 
-  @override
-  Future<ApiResult> changePassword(ChangePasswordParams reqParams) async {
-    if (await networkInfo.isConnected) {
-      try {
-        final remoteData = await remoteDataSource.changePassword(reqParams);
-        return ApiResult.success(data: remoteData);
-      } catch (e) {
-        if (e is DioError &&
-            e.type == DioErrorType.response &&
-            e.response?.data != null) {
-          return ApiResult.failure(
-              error: NetworkExceptions.defaultError(
-                  e.response?.data['error']['message']));
-        } else {
-          return ApiResult.failure(error: NetworkExceptions.getDioException(e));
-          // return ApiResult.failure(error: NetworkExceptions.getDioException(e));
-        }
-      }
-    } else {
-      //Or fetch data locally
-      return const ApiResult.failure(
-          error: NetworkExceptions.noInternetConnection());
-    }
-  }
+  // @override
+  // Future<ApiResult> changePassword(ChangePasswordParams reqParams) async {
+  //   if (await networkInfo.isConnected) {
+  //     try {
+  //       final remoteData = await remoteDataSource.changePassword(reqParams);
+  //       return ApiResult.success(data: remoteData);
+  //     } catch (e) {
+  //       if (e is DioError &&
+  //           e.type == DioErrorType.response &&
+  //           e.response?.data != null) {
+  //         return ApiResult.failure(
+  //             error: NetworkExceptions.defaultError(
+  //                 e.response?.data['error']['message']));
+  //       } else {
+  //         return ApiResult.failure(error: NetworkExceptions.getDioException(e));
+  //         // return ApiResult.failure(error: NetworkExceptions.getDioException(e));
+  //       }
+  //     }
+  //   } else {
+  //     //Or fetch data locally
+  //     return const ApiResult.failure(
+  //         error: NetworkExceptions.noInternetConnection());
+  //   }
+  // }
 
-  @override
-  Future<ApiResult<String?>> removeAccount() async {
-    if (await networkInfo.isConnected) {
-      try {
-        final remoteData = await remoteDataSource.removeAccount();
-        return ApiResult.success(data: remoteData);
-      } catch (e) {
-        if (e is DioError &&
-            e.type == DioErrorType.response &&
-            e.response?.data != null) {
-          return ApiResult.failure(
-              error: NetworkExceptions.defaultError(
-                  e.response?.data['error']['message']));
-        } else {
-          return ApiResult.failure(error: NetworkExceptions.getDioException(e));
-          // return ApiResult.failure(error: NetworkExceptions.getDioException(e));
-        }
-      }
-    } else {
-      //Or fetch data locally
-      return const ApiResult.failure(
-          error: NetworkExceptions.noInternetConnection());
-    }
-  }
+  // @override
+  // Future<ApiResult<String?>> removeAccount() async {
+  //   if (await networkInfo.isConnected) {
+  //     try {
+  //       final remoteData = await remoteDataSource.removeAccount();
+  //       return ApiResult.success(data: remoteData);
+  //     } catch (e) {
+  //       if (e is DioError &&
+  //           e.type == DioErrorType.response &&
+  //           e.response?.data != null) {
+  //         return ApiResult.failure(
+  //             error: NetworkExceptions.defaultError(
+  //                 e.response?.data['error']['message']));
+  //       } else {
+  //         return ApiResult.failure(error: NetworkExceptions.getDioException(e));
+  //         // return ApiResult.failure(error: NetworkExceptions.getDioException(e));
+  //       }
+  //     }
+  //   } else {
+  //     //Or fetch data locally
+  //     return const ApiResult.failure(
+  //         error: NetworkExceptions.noInternetConnection());
+  //   }
+  // }
 }

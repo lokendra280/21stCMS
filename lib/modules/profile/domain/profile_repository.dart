@@ -10,11 +10,11 @@ import '../data/model/response_model/profile_info.dart';
 abstract class ProfileRepository {
   Future<ApiResult<ProfileInfo>> getUserProfile();
 
-  Future<ApiResult> updateProfile(ProfileUpdateReqParams reqParams);
+  // Future<ApiResult> updateProfile(ProfileUpdateReqParams reqParams);
 
-  Future<ApiResult<NetworkImageModel>> updateProfilePic(XFile pickedFile);
+  // Future<ApiResult<NetworkImageModel>> updateProfilePic(XFile pickedFile);
 
-  Future<ApiResult> changePassword(ChangePasswordParams reqParams);
-  Future<ApiResult<String?>> removeAccount();
+  // Future<ApiResult> changePassword(ChangePasswordParams reqParams);
+  // Future<ApiResult<String?>> removeAccount();
   // LoginParams? getSavedCredential();
 }
