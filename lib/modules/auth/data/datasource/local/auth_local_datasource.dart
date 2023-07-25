@@ -6,8 +6,7 @@ abstract class AuthLocalDataSource {
 
   Future<String?> getLastRefreshToken();
 
-  Future<void> cacheToken(
-      {required String accessToken, required String refreshToken});
+  Future<void> cacheToken({required String accessToken, required String refreshToken});
 
   Future<void> cacheLoginData(String data);
 
@@ -38,12 +37,9 @@ class AuthLocalDataSourceImpl extends AuthLocalDataSource {
   }
 
   @override
-  Future<void> cacheToken(
-      {required String accessToken, required String refreshToken}) async {
-    await secureStorage.write(
-        key: LocalStorageConst.kAccessToken, value: accessToken);
-    await secureStorage.write(
-        key: LocalStorageConst.kRefreshToken, value: refreshToken);
+  Future<void> cacheToken({required String accessToken, required String refreshToken}) async {
+    await secureStorage.write(key: LocalStorageConst.kAccessToken, value: accessToken);
+    await secureStorage.write(key: LocalStorageConst.kRefreshToken, value: refreshToken);
   }
 
   @override

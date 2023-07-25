@@ -1,7 +1,5 @@
-import 'package:dio/dio.dart';
 
-import '../../../../core/data/remote/api_result.dart';
-import '../../../../core/data/remote/network_exceptions.dart';
+
 import '../../../../core/data/remote/network_info.dart';
 import '../../domain/auth_repository.dart';
 import '../datasource/local/auth_local_datasource.dart';
@@ -35,30 +33,31 @@ class AuthRepositoryImpl extends AuthRepository {
         .getLastAccessToken(); // fetch according to condition [and save it]
   }
 
-  @override
-  Future<ApiResult<String?>> logOutUser() async {
-    if (await networkInfo.isConnected) {
-      try {
-        return const ApiResult.success(data: '');
-        // final remoteData = await remoteDataSource.logOutUser();
-        // localDataSource.clearTokenCache();
-        // return ApiResult.success(data: remoteData['message']);
-      } catch (e) {
-        await localDataSource.clearTokenCache(); //clear local cache anyway
-        if (e is DioError && e.type == DioErrorType.response) {
-          return ApiResult.failure(
-              error:
-                  NetworkExceptions.defaultError(e.response?.data['message']));
-        } else {
-          return ApiResult.failure(error: NetworkExceptions.getDioException(e));
-        }
-      }
-    } else {
-      //Or fetch data locally
-      return const ApiResult.failure(
-          error: NetworkExceptions.noInternetConnection());
-    }
-  }
+  // @override
+  // Future<ApiResult<String?>> logOutUser() async {
+  //   if (await networkInfo.isConnected) {
+  //     try {
+  //       return const ApiResult.success(data: '');
+  //       // final remoteData = await remoteDataSource.logOutUser();
+  //       // localDataSource.clearTokenCache();
+  //       // return ApiResult.success(data: remoteData['message']);
+  //     } catch (e) {
+  //       await localDataSource.clearTokenCache(); //clear local cache anyway
+  //       if (e is DioError && e.type == DioErrorType.response) {
+  //         return ApiResult.failure(
+  //             error:
+  //             NetworkExceptions.defaultError(e.response?.data['message']));
+  //       } else {
+  //         return ApiResult.failure(error: NetworkExceptions.getDioException(e));
+  //       }
+  //     }
+  //   } else {
+  //     //Or fetch data locally
+  //     return const ApiResult.failure(
+  //         error: NetworkExceptions.noInternetConnection());
+  //   }
+  // }
+  //
 
   @override
   Future<void> clearTokens() async {

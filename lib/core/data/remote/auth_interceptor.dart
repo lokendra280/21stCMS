@@ -77,12 +77,13 @@ class AuthInterceptor extends QueuedInterceptor {
           _dio.options.headers["Accept"] = "application/json";
           _dio.options.headers['Retry-Count'] =
               1; //setting retry count to 1 to prevent further concurrent calls
-          final Response? response = await _dio.request(requestOptions.path,
+          final Response response = await _dio.request(requestOptions.path,
               options: opts,
               cancelToken: requestOptions.cancelToken,
               onReceiveProgress: requestOptions.onReceiveProgress,
               data: requestOptions.data,
               queryParameters: requestOptions.queryParameters);
+          // ignore: unnecessary_null_comparison
           if (response != null) {
             return handler.resolve(response);
           } else {

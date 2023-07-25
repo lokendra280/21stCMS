@@ -104,21 +104,21 @@ class Helper {
   /// You can get your iOS app id from
   /// http://itunes.apple.com/lookup?bundleId=YOUR_BUNDLE_ID then look for trackId
   ///
-  static void launchAppStore() {
-    if (Platform.isAndroid || Platform.isIOS) {
-      final appId =
-          Platform.isAndroid ? 'com.user.salesberry' : '1603774088'; //replace with salesberry app id
-      final url = Uri.parse(
-        Platform.isAndroid
-            ? "market://details?id=$appId"
-            : "https://apps.apple.com/app/id$appId",
-      );
-      launchUrl(
-        url,
-        mode: LaunchMode.externalApplication,
-      );
-    }
-  }
+  // static void launchAppStore() {
+  //   if (Platform.isAndroid || Platform.isIOS) {
+  //     final appId =
+  //         Platform.isAndroid ? 'com.user.salesberry' : '1603774088'; //replace with salesberry app id
+  //     final url = Uri.parse(
+  //       Platform.isAndroid
+  //           ? "market://details?id=$appId"
+  //           : "https://apps.apple.com/app/id$appId",
+  //     );
+  //     launchUrl(
+  //       url,
+  //       mode: LaunchMode.externalApplication,
+  //     );
+  //   }
+  // }
 
   /// returns date difference in seconds
   static int daysBetween(String from, String to) {

@@ -1,10 +1,9 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:cms/core/presentation/routes/router.gr.dart';
-import 'package:cms/modules/task/presentation/task.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../core/presentation/routes/router.gr.dart';
 import '../../di/injection.dart';
 import '../screens/login_page.dart';
 
@@ -23,7 +22,7 @@ class AuthPageWrapper extends ConsumerWidget {
     if (isAuthenticated)
       return child;
     else {
-      return TaskPage(); // <------ here we return login/signup intro page
+      return LoginPage(); // <------ here we return login/signup intro page
     }
   }
 }
@@ -77,6 +76,6 @@ void authFunction(
   if (isAuthenticated) {
     function();
   } else {
-    // context.router.navigate(LoginRoute(authGuard: false));
+    context.router.navigate(LoginRoute(authGuard: false));
   }
 }

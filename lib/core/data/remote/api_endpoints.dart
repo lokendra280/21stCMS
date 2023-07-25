@@ -47,7 +47,7 @@ class APIPathHelper {
 
   // static final String clientId = dotenv.env['CLIENT_ID'] ?? "";
   static final String clientSecret = dotenv.env['CLIENT_SECRET'] ??
-      "https://21stcms.com/api/v1"; // global api base url
+      ""; // global api base url
 
   static String projectAPIs(APIPath path, {String? keyword}) {
     switch (path) {

@@ -1,13 +1,15 @@
 class LoginParams {
+
   String? email;
   String? password;
 
   LoginParams({
+  
     this.email,
     this.password,
   });
 
-  Map<String, dynamic> toJsonLogin() {
+  Map<String, dynamic> toJsonLogin(){
     final map = <String, dynamic>{};
 
     map["email"] = email;
@@ -16,18 +18,19 @@ class LoginParams {
   }
 }
 
-class SocialLoginParams {
+
+class SocialLoginParams{
   String? accessToken;
   String? type;
 
   SocialLoginParams({
     this.accessToken,
     this.type,
-  });
+});
 
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson(){
     final map = <String, dynamic>{};
-    map["loginType"] = type ?? "facebook";
+    map["loginType"] = type??"facebook";
     map["accessToken"] = accessToken;
     return map;
   }

@@ -27,7 +27,8 @@ class LoginPage extends ConsumerWidget {
 
   LoginPage({Key? key, this.authGuard = true, this.onLoginCallback})
       : super(key: key);
-
+  final TextEditingController _emailCtrl = TextEditingController();
+  final TextEditingController _passwordCtrl = TextEditingController();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(loginProvider);
@@ -92,6 +93,7 @@ class LoginPage extends ConsumerWidget {
                   fillColor: Colors.transparent,
                   hintTxt: "Email Address",
                   textInputType: TextInputType.emailAddress,
+                  controller: _emailCtrl,
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(
                         errorText: "Email is required"),
@@ -107,6 +109,7 @@ class LoginPage extends ConsumerWidget {
                   textInputType: TextInputType.visiblePassword,
                   isPassword: true,
                   hintTxt: "Password",
+                  controller: _passwordCtrl,
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(
                         errorText: "Password is required"),

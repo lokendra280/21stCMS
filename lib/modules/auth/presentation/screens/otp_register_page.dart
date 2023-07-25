@@ -16,6 +16,7 @@
 // import '../provider/register_otp_notifier.dart';
 
 // class RegisterOtpPage extends ConsumerWidget {
+
 //   RegisterOtpPage({Key? key}) : super(key: key);
 
 //   String? phone;
@@ -31,8 +32,9 @@
 //               NetworkExceptions.getErrorMessage(
 //                   error.error as NetworkExceptions)),
 //           data: (_) {
-//             CustomToast.success('An OTP has been sent to your mobile number');
-//             // context.router.navigate(SignUpRoute(phone: phone!));
+//             CustomToast.success(
+//                 'An OTP has been sent to your mobile number');
+//             context.router.navigate(SignUpRoute(phone: phone!));
 //           },
 //           orElse: () {});
 //     });
@@ -47,7 +49,7 @@
 //         child: Center(
 //           child: Padding(
 //             padding:
-//                 const EdgeInsets.symmetric(horizontal: SC.mW, vertical: SC.mH),
+//             const EdgeInsets.symmetric(horizontal: SC.mW, vertical: SC.mH),
 //             child: Column(
 //               mainAxisAlignment: MainAxisAlignment.spaceAround,
 //               mainAxisSize: MainAxisSize.min,
@@ -55,14 +57,11 @@
 //               children: [
 //                 AspectRatio(
 //                     aspectRatio: 2.3,
-//                     child:
-//                         SvgPicture.asset(UIAssets.getSvg('FASOWEAR-LOGO.svg'))),
+//                     child: SvgPicture.asset(UIAssets.getSvg('FASOWEAR-LOGO.svg'))),
 //                 SBC.xLH,
 //                 Container(
-//                   padding: const EdgeInsets.symmetric(
-//                       horizontal: SC.mW, vertical: SC.mH),
-//                   margin: const EdgeInsets.symmetric(
-//                       horizontal: SC.mW, vertical: SC.mH),
+//                   padding: const EdgeInsets.symmetric(horizontal: SC.mW, vertical: SC.mH),
+//                   margin: const EdgeInsets.symmetric(horizontal: SC.mW, vertical: SC.mH),
 //                   decoration: BoxDecoration(
 //                     border: Border.all(
 //                       width: 0.1,
@@ -100,11 +99,11 @@
 //                                   child: SecondaryTextField(
 //                                     maxLength: 10,
 //                                     validator: FormBuilderValidators.compose([
-//                                       FormBuilderValidators.required(
+//                                       FormBuilderValidators.required(context,
 //                                           errorText: "Phone is required"),
-//                                       // FormBuilderValidators.match(
-//                                       //     context, r'(?:\+977[- ])?\d{2}-?\d{7,8}',
-//                                       //     errorText: "Enter a valid mobile number"),
+//                                       FormBuilderValidators.match(
+//                                           context, r'(?:\+977[- ])?\d{2}-?\d{7,8}',
+//                                           errorText: "Enter a valid mobile number"),
 //                                     ]),
 //                                     textInputType: TextInputType.number,
 //                                     onSaved: (val) {
@@ -117,8 +116,7 @@
 //                               ),
 //                               PrimaryButton(
 //                                 onPressed: () {
-//                                   if (_phoneKey.currentState!
-//                                       .saveAndValidate()) {
+//                                   if(_phoneKey.currentState!.saveAndValidate()){
 //                                     ref
 //                                         .watch(registerSendOtpNotifier.notifier)
 //                                         .sendOtpPhone(phone!);
@@ -139,6 +137,7 @@
 //                     ],
 //                   ),
 //                 ),
+
 //               ],
 //             ),
 //           ),

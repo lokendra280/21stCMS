@@ -66,6 +66,7 @@ class NetworkExceptions with _$NetworkExceptions {
   }
 
   static NetworkExceptions getDioException(error) {
+
     if (error is Exception) {
       try {
         NetworkExceptions networkExceptions;
@@ -103,12 +104,14 @@ class NetworkExceptions with _$NetworkExceptions {
         return const NetworkExceptions.unexpectedError();
       }
     } else {
+
       if (error.toString().contains("is not a subtype of")) {
         return const NetworkExceptions.unableToProcess();
       } else {
         return const NetworkExceptions.unexpectedError();
       }
     }
+
   }
 
   static String getErrorMessage(NetworkExceptions networkExceptions) {
@@ -134,8 +137,7 @@ class NetworkExceptions with _$NetworkExceptions {
     }, requestTimeout: () {
       errorMessage = "Connection request timeout";
     }, noInternetConnection: () {
-      errorMessage =
-          "No internet connection! Check your network connection and try again";
+      errorMessage = "No internet connection! Check your network connection and try again";
     }, conflict: () {
       errorMessage = "Error due to a conflict";
     }, sendTimeout: () {
